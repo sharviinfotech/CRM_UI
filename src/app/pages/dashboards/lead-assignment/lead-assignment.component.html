@@ -1,1 +1,49 @@
-<p>lead-assignment works!</p>
+<div class="p-3">
+  <div class="card-LE">
+    <div class="card-header-LE">Lead Assignment</div>
+    <div class="card-body-LE">
+      <form class="form-grid" [formGroup]="lead_assignment" (ngSubmit)="savePlan()">
+        <!-- Segment -->
+        <div class="form-field">
+          <input type="text" formControlName="salesRepresentativeAssignment" placeholder="" />
+          <label>Sales Representative Assignment</label>
+          <small class="error" *ngIf="lead_assignment.get('salesRepresentativeAssignment')?.touched && lead_assignment.get('salesRepresentativeAssignment')?.invalid">
+          Sales Representative Assignment is required
+          </small>
+        </div>
+
+        
+
+        
+
+     
+
+
+        <div class="form-field floating-label select-field">
+          <select formControlName="assignmentCriteria" id="assignmentCriteria">
+            <option value="" disabled selected>Select</option>
+            <option value="geography">geography</option>
+            <option value="product interest">product interest</option>
+            <option value="others">others</option>
+           
+          </select>
+          <label for="source">Assignment Criteria</label>
+          <small class="error" *ngIf="lead_assignment.get('assignmentCriteria')?.touched && lead_assignment.get('assignmentCriteria')?.invalid">
+           Assignment Criteria is required
+          </small>
+        </div>
+
+        <!-- Buttons -->
+        <div class="form-buttons">
+          <button type="button" *ngIf="isEditMode" class="btn-secondary" (click)="cancelEdit()">
+            Cancel
+          </button>
+          <button type="submit">
+            {{ isEditMode ? 'Update Details' : 'Save' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

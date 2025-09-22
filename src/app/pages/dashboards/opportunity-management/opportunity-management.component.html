@@ -1,1 +1,72 @@
-<p>opportunity-management works!</p>
+<div class="p-3">
+  <div class="card-LE">
+    <div class="card-header-LE">Lead Capture</div>
+    <div class="card-body-LE">
+      <form class="form-grid" [formGroup]="opportunity_management" (ngSubmit)="savePlan()">
+        <!-- Segment -->
+        <div class="form-field">
+          <input type="text" formControlName="opportunityName" placeholder="" />
+          <label>Opportunity Name</label>
+          <small class="error" *ngIf="opportunity_management.get('opportunityName')?.touched && opportunity_management.get('opportunityName')?.invalid">
+            Opportunity Name is required
+          </small>
+        </div>
+
+        <!-- Customer Profile -->
+        <div class="form-field">
+          <input type="text" formControlName="lead" placeholder="" />
+          <label>Lead/Contact Information</label>
+          <small class="error" *ngIf="opportunity_management.get('lead')?.touched && opportunity_management.get('lead')?.invalid">
+           Lead/Contact Information is required
+          </small>
+        </div>
+
+
+        <div class="form-field">
+          <input type="text" formControlName="product" placeholder="" />
+          <label>Product/Service Interest</label>
+          <small class="error" *ngIf="opportunity_management.get('serviceInterest')?.touched && opportunity_management.get('serviceInterest')?.invalid">
+            Product/Service Interest is required
+          </small>
+        </div>
+        <div class="form-field floating-label select-field">
+          <select formControlName="quoteInformation" id="quoteInformation">
+            <option value="" disabled selected>Select</option>
+            <option value="price">price</option>
+            <option value="delivery">delivery</option>
+            <option value="schedule">schedule</option>
+            <option value="others">others</option>
+          </select>
+          <label for="source">Quote Information</label>
+          <small class="error" *ngIf="opportunity_management.get('quoteInformation')?.touched && opportunity_management.get('quoteInformation')?.invalid">
+           Quote Information is required
+          </small>
+        </div>
+        <div class="form-field floating-label select-field">
+          <select formControlName="stage" id="stage">
+            <option value="" disabled selected>Select</option>
+            <option value="prospecting">prospecting</option>
+            <option value="proposal">proposal</option>
+            <option value="closed">closed</option>
+            <option value="others">others</option>
+          </select>
+          <label for="source">Stage</label>
+          <small class="error" *ngIf="opportunity_management.get('stage')?.touched && opportunity_management.get('stage')?.invalid">
+           Stage is required
+          </small>
+        </div>
+
+        <!-- Buttons -->
+        <div class="form-buttons">
+          <button type="button" *ngIf="isEditMode" class="btn-secondary" (click)="cancelEdit()">
+            Cancel
+          </button>
+          <button type="submit">
+            {{ isEditMode ? 'Update Details' : 'Save' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
