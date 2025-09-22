@@ -1,1 +1,80 @@
-<p>lead-profile works!</p>
+<div class="p-3">
+  <div class="card-LE">
+    <div class="card-header-LE">Lead Profile</div>
+    <div class="card-body-LE">
+      <form class="form-grid" [formGroup]="lead_profile" (ngSubmit)="saveProfile()">
+
+        <!-- Lead Name -->
+        <div class="form-field">
+          <input type="text" formControlName="leadName" placeholder="" />
+          <label>Lead Name</label>
+          <small class="error" *ngIf="lead_profile.get('leadName')?.touched && lead_profile.get('leadName')?.invalid">
+            Lead Name is required
+          </small>
+        </div>
+
+        <!-- Company Name -->
+        <div class="form-field">
+          <input type="text" formControlName="companyName" placeholder="" />
+          <label>Company Name</label>
+          <small class="error" *ngIf="lead_profile.get('companyName')?.touched && lead_profile.get('companyName')?.invalid">
+            Company Name is required
+          </small>
+        </div>
+
+        <!-- Email -->
+        <div class="form-field">
+          <input type="email" formControlName="email" placeholder="" />
+          <label>Email</label>
+          <small class="error" *ngIf="lead_profile.get('email')?.touched && lead_profile.get('email')?.invalid">
+            Valid Email is required
+          </small>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="form-field">
+          <input type="text" formControlName="phoneNumber" placeholder="" />
+          <label>Phone Number</label>
+          <small class="error" *ngIf="lead_profile.get('phoneNumber')?.touched && lead_profile.get('phoneNumber')?.invalid">
+            Phone Number is required
+          </small>
+        </div>
+
+        <!-- Address -->
+        <div class="form-field">
+          <input type="text" formControlName="address" placeholder="" />
+          <label>Address</label>
+          <small class="error" *ngIf="lead_profile.get('address')?.touched && lead_profile.get('address')?.invalid">
+            Address is required
+          </small>
+        </div>
+
+        <!-- Interaction History -->
+        <div class="form-field">
+          <textarea formControlName="interactionHistory" placeholder=" "></textarea>
+          <label>Interaction History</label>
+          <small class="error" *ngIf="lead_profile.get('interactionHistory')?.touched && lead_profile.get('interactionHistory')?.invalid">
+            Interaction History is required
+          </small>
+        </div>
+
+        <!-- Notes -->
+        <div class="form-field">
+          <textarea formControlName="notes" placeholder=" "></textarea>
+          <label>Notes</label>
+        </div>
+
+        <!-- Buttons -->
+        <div class="form-buttons">
+          <button type="button" *ngIf="isEditMode" class="btn-secondary" (click)="cancelEdit()">
+            Cancel
+          </button>
+          <button type="submit">
+            {{ isEditMode ? 'Update Profile' : 'Save Profile' }}
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

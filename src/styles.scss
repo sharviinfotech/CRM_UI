@@ -555,7 +555,8 @@ table th {
   }
 
   .form-field input,
-  .form-field select {
+  .form-field select,
+  .form-field textarea {
     padding: 12px;
     font-size: 14px;
     border: 1px solid #ced4da;
@@ -571,7 +572,8 @@ table th {
 
   /* Floating label animation - when focused */
   .form-field input:focus + label,
-  .form-field select:focus + label {
+  .form-field select:focus + label,
+  .form-field textarea:focus + label {
     top: -8px;
     left: 8px;
     font-size: 12px;
@@ -581,7 +583,8 @@ table th {
 
   /* Floating label animation - when has content */
   .form-field input:not(:placeholder-shown) + label,
-  .form-field select:not([value=""]):valid + label {
+  .form-field select:not([value=""]):valid + label
+  .form-field textarea:not(:placeholder-shown) + label {
     top: -8px;
     left: 8px;
     font-size: 12px;
@@ -643,13 +646,15 @@ table th {
 
   /* Error state styling */
   .form-field input.ng-invalid.ng-touched,
-  .form-field select.ng-invalid.ng-touched {
+  .form-field select.ng-invalid.ng-touched,
+  .form-field textarea.ng-invalid.ng-touched {
     border-color: #dc3545;
     box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2);
   }
 
   .form-field input.ng-invalid.ng-touched + label,
-  .form-field select.ng-invalid.ng-touched + label {
+  .form-field select.ng-invalid.ng-touched + label,
+  .form-field textarea.ng-invalid.ng-touched + label {
     color: #dc3545 !important;
   }
 
