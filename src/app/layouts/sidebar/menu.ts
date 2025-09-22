@@ -13,21 +13,46 @@ export const MENU: MenuItem[] = [
                 parentId: 2,
                 icon: 'bx-home-circle',
             },
+             {
+                id: 2,
+                label: 'Lead Capture',
+                link: '/lead_capture',
+                parentId: 2,
+                icon: 'bx-home-circle',
+            },
+            {
+                id: 2,
+                label: 'Lead Qualification',
+                link: '/lead_qualification',
+                parentId: 2,
+                icon: 'bx-home-circle',
+            },
+             {
+                id: 2,
+                label: 'Lead Profile',
+                link: '/lead_profile',
+                parentId: 2,
+                icon: 'bx-home-circle',
+            },
+             {
+                id: 2,
+                label: 'Lead Asignment',
+                link: '/lead_assignment',
+                parentId: 2,
+                icon: 'bx-home-circle',
+            },
               {
                 id: 2,
-                label: 'Co11',
-                link: '/co11',
+                label: 'Opportunity Management ',
+                link: '/opportunity_management',
                 parentId: 2,
                 icon: 'bx-home-circle',
             },
+            
+            
              
-              {
-                id: 3,
-                label: 'Order Info System',
-                link: '/coois',
-                parentId: 2,
-                icon: 'bx-home-circle',
-            },
+             
+              
            
              
             

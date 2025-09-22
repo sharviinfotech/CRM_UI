@@ -17,9 +17,12 @@ import { ServiceChargesComponent } from './service-charges/service-charges.compo
 import { GlobalReviewEditComponent } from './global-review-edit/global-review-edit.component';
 import { ReviewNotificationComponent } from './review-notification/review-notification.component';
 import { SectorWiseComponent } from './sector-wise/sector-wise.component';
+import { LeadCaptureComponent } from './lead-capture/lead-capture.component';
+import { LeadQualificationComponent } from './lead-qualification/lead-qualification.component';
+import { LeadProfileComponent } from './lead-profile/lead-profile.component';
 
-import { CooisComponent } from './coois/coois.component';
-import { Co11Component } from './co11/co11.component';
+
+
 
 // In all files that import this component
 
@@ -86,14 +89,28 @@ const routes: Routes = [
         component: SectorWiseComponent
     },
     {
-        path: 'co11',
-        component: Co11Component
+        path: 'lead_capture',
+        component: LeadCaptureComponent
+    },
+    {
+        path: 'lead_qualification',
+        component: LeadQualificationComponent
+    },
+      {
+        path: 'lead_profile',
+        component: LeadProfileComponent
+    },
+     {
+        path: 'lead_assignment',
+        component: LeadProfileComponent
+    },
+     {
+        path: 'opportunity_management',
+        component: LeadProfileComponent
     },
    
-        {
-        path: 'coois',
-        component: CooisComponent
-    },
+   
+   
 
    
     

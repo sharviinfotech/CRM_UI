@@ -6,8 +6,14 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
 import { DashboardsRoutingModule } from './dashboards-routing.module';
-import { CooisComponent } from './coois/coois.component';
-import { Co11Component } from './co11/co11.component';
+import { LeadCaptureComponent } from './lead-capture/lead-capture.component';
+import { LeadQualificationComponent } from './lead-qualification/lead-qualification.component';
+import { LeadProfileComponent } from './lead-profile/lead-profile.component';
+import { LeadAssignmentComponent } from './lead-assignment/lead-assignment.component';
+import { OpportunityManagementComponent } from './opportunity-management/opportunity-management.component';
+
+
+
 
 
 // Standalone components (import them directly)
@@ -44,6 +50,18 @@ import { Co11Component } from './co11/co11.component';
     
   
     // Co11Component
+  
+    
+  
+    // LeadCaptureComponent
+  
+    // LeadQualificationComponent
+  
+    // LeadProfileComponent
+  
+    // LeadAssignmentComponent
+  
+    // OpportunityManagementComponent
   ]
 })
 export class DashboardsModule {}
