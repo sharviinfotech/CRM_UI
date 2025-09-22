@@ -1,1 +1,76 @@
-<p>lead-qualification works!</p>
+<div class="p-3">
+  <div class="card-LE">
+    <div class="card-header-LE">Lead Qualification</div>
+    <div class="card-body-LE">
+      <form class="form-grid" [formGroup]="lead_qualification" (ngSubmit)="savePlan()">
+
+        <!-- Lead Score -->
+        <div class="form-field">
+          <input type="number" formControlName="leadScore" placeholder="" />
+          <label>Lead Score</label>
+          <small class="error" *ngIf="lead_qualification.get('leadScore')?.touched && lead_qualification.get('leadScore')?.invalid">
+            Lead Score is required and must be a number
+          </small>
+        </div>
+
+        <!-- Qualification Status -->
+        <div class="form-field floating-label select-field">
+          <select formControlName="qualificationStatus" id="qualificationStatus">
+            <option value="" disabled selected>Select Status</option>
+            <option value="qualified">Qualified</option>
+            <option value="unqualified">Unqualified</option>
+            <option value="nurturing">Nurturing</option>
+          </select>
+          <label for="qualificationStatus">Qualification Status</label>
+          <small class="error" *ngIf="lead_qualification.get('qualificationStatus')?.touched && lead_qualification.get('qualificationStatus')?.invalid">
+            Qualification Status is required
+          </small>
+        </div>
+
+        <!-- BANT Criteria -->
+        <div class="form-field">
+          <input type="text" formControlName="budget" placeholder="" />
+          <label>Budget</label>
+          <small class="error" *ngIf="lead_qualification.get('budget')?.touched && lead_qualification.get('budget')?.invalid">
+            Budget is required
+          </small>
+        </div>
+
+        <div class="form-field">
+          <input type="text" formControlName="authority" placeholder="" />
+          <label>Authority</label>
+          <small class="error" *ngIf="lead_qualification.get('authority')?.touched && lead_qualification.get('authority')?.invalid">
+            Authority is required
+          </small>
+        </div>
+
+        <div class="form-field">
+          <input type="text" formControlName="need" placeholder="" />
+          <label>Need</label>
+          <small class="error" *ngIf="lead_qualification.get('need')?.touched && lead_qualification.get('need')?.invalid">
+            Need is required
+          </small>
+        </div>
+
+        <div class="form-field">
+          <input type="text" formControlName="timeline" placeholder="" />
+          <label>Timeline</label>
+          <small class="error" *ngIf="lead_qualification.get('timeline')?.touched && lead_qualification.get('timeline')?.invalid">
+            Timeline is required
+          </small>
+        </div>
+
+        <!-- Buttons -->
+        <div class="form-buttons">
+          <button type="button" *ngIf="isEditMode" class="btn-secondary" (click)="cancelEdit()">
+            Cancel
+          </button>
+          <button type="submit">
+            {{ isEditMode ? 'Update Qualification' : 'Save Qualification' }}
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
