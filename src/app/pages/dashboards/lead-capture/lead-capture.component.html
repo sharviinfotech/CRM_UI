@@ -1,1 +1,77 @@
-<p>lead-capture works!</p>
+<div class="p-3">
+  <div class="card-LE">
+    <div class="card-header-LE">Lead Capture Info</div>
+    <div class="card-body-LE">
+      <form class="form-grid" [formGroup]="lead_capture" (ngSubmit)="savePlan()">
+        <!-- Segment -->
+        <div class="form-field">
+          <input type="text" formControlName="leadName" placeholder="" />
+          <label>Lead Name</label>
+          <small class="error" *ngIf="lead_capture.get('leadName')?.touched && lead_capture.get('leadName')?.invalid">
+            Lead Name is required
+          </small>
+        </div>
+
+        <!-- Customer Profile -->
+        <div class="form-field">
+          <input type="text" formControlName="companyName" placeholder="" />
+          <label>Company Name</label>
+          <small class="error" *ngIf="lead_capture.get('companyName')?.touched && lead_capture.get('companyName')?.invalid">
+            Company Name is required
+          </small>
+        </div>
+
+        <!-- Branch -->
+        <div class="form-field">
+          <input type="text" formControlName="email" placeholder="" />
+          <label>Email</label>
+          <small class="error" *ngIf="lead_capture.get('email')?.touched && lead_capture.get('email')?.invalid">
+           Email is required
+          </small>
+        </div>
+
+        <!-- Branch Zone -->
+        <div class="form-field">
+          <input type="text" formControlName="phoneNumber" placeholder="" />
+          <label>Phone Number</label>
+          <small class="error" *ngIf="lead_capture.get('phoneNumber')?.touched && lead_capture.get('phoneNumber')?.invalid">
+            phoneNumber is required
+          </small>
+        </div>
+        <div class="form-field">
+          <input type="text" formControlName="product" placeholder="" />
+          <label>Product/Service Interest</label>
+          <small class="error" *ngIf="lead_capture.get('product')?.touched && lead_capture.get('product')?.invalid">
+            Product/Service Interest is required
+          </small>
+        </div>
+        <div class="form-field floating-label select-field">
+  <select formControlName="source" id="source">
+    <option value="" disabled selected>Select</option>
+    <option value="website">website</option>
+    <option value="Trade">Trade</option>
+    <option value="show">show</option>
+    <option value="Referral">Referral</option>
+  </select>
+  <label for="source">Source</label>
+  <small class="error" *ngIf="lead_capture.get('source')?.touched && lead_capture.get('source')?.invalid">
+   Source is required
+  </small>
+</div>
+
+
+
+        <!-- Buttons -->
+        <div class="form-buttons">
+          <button type="button" *ngIf="isEditMode" class="btn-secondary" (click)="cancelEdit()">
+            Cancel
+          </button>
+          <button type="submit">
+            {{ isEditMode ? 'Update Details' : 'Save' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
