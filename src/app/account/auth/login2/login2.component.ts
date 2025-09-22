@@ -32,9 +32,9 @@ export class Login2Component implements OnInit {
   images = [
     
     // 'assets/images/AircraftFlight.png',
-    'assets/images/bgrdashboard.png',
-    'assets/images/HBL_background_resized_1330x780.png',
-     'assets/images/HBL_lightImage.png',
+    'assets/images/image (3).png',
+    // 'assets/images/HBL_background_resized_1330x780.png',
+    //  'assets/images/HBL_lightImage.png',
    
   ];
   currentIndex = 0;
