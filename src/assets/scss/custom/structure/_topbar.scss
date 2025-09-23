@@ -256,7 +256,7 @@ body[data-sidebar="dark"] {
     
     .navbar-brand-box {
         // background: $sidebar-dark-bg;
-  background: url("/assets/images/bgrdashboard.png")   !important;
+  background: url("/assets/images/crmsidebar.jpg")   !important;
 //   background-image: linear-gradient(to top, #f1e7d95e, #dcd5cfa8) !important;
   border-bottom: 1px solid white;
         // background-image: linear-gradient(to top, #6ba3cd, #031c2e) !important;
@@ -296,6 +296,7 @@ body[data-sidebar="dark"] {
   text-transform: uppercase;
 //   background: linear-gradient(90deg, #00c6ff, #0072ff); /* gradient text */
   -webkit-background-clip: text;
+   background-clip: text;
 //   -webkit-text-fill-color: transparent;
   animation: fadeInUp 1s ease-out;
 }
