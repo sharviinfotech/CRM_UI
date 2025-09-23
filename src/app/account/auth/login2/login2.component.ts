@@ -32,9 +32,9 @@ export class Login2Component implements OnInit {
   images = [
     
     // 'assets/images/AircraftFlight.png',
-    'assets/images/crmmain.jpeg',
-      'assets/images/crmimage5.jpeg',
-       'assets/images/crmimage4.jpeg',
+    'assets/images/crm_photo2.jpg',
+     // 'assets/images/crmimage5.jpeg',
+      //'assets/images/crmimage4.jpeg',
    
   ];
   currentIndex = 0;
