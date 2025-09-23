@@ -57,6 +57,8 @@ export class Login2Component implements OnInit {
     this.loginForm = this.formBuilder.group({
       userName: ['', [Validators.required]],
       password: ['', [Validators.required]],
+      // language: ['', [Validators.required]],
+      // client: ['', [Validators.required]]
     });
     this.forgotPasswordForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]]
