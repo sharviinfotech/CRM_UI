@@ -22,7 +22,7 @@ import { LeadQualificationComponent } from './lead-qualification/lead-qualificat
 import { LeadProfileComponent } from './lead-profile/lead-profile.component';
 import { LeadAssignmentComponent } from './lead-assignment/lead-assignment.component';
 import { OpportunityManagementComponent } from './opportunity-management/opportunity-management.component';
-
+import { CreateComponent } from './create/create.component';
 
 
 
@@ -109,6 +109,10 @@ const routes: Routes = [
      {
         path: 'opportunity_management',
         component: OpportunityManagementComponent
+    },
+    {
+        path: 'create',
+        component: CreateComponent
     },
    
    
