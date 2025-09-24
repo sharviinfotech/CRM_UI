@@ -71,7 +71,6 @@
     </div>
   </div>
 
-  
   <div class="pipeline-column">
     <h3>Won <button class="add-button" (click)="onNewLeadFormToggle('Won')">+</button></h3>
     <div class="lead-form" *ngIf="addFormTab === 'Won'">
@@ -99,9 +98,18 @@
 
 <div class="lead-details-container" *ngIf="showLeadDetails && selectedLead">
   <div class="details-header">
+    <button class="back-arrow-button" (click)="onBackToList()">
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
     <button (click)="onUpdateStatus('Won')">Won</button>
     <button (click)="onUpdateStatus('Lost')">Lost</button>
-    <button (click)="onBackToList()">Back to List</button>
+    <div class="spacer"></div>
+    <button (click)="onUpdateStatus('New')">New <span class="arrow-icon">&gt;</span></button>
+    <button (click)="onUpdateStatus('Qualified')">Qualified <span class="arrow-icon">&gt;</span></button>
+    <button (click)="onUpdateStatus('Proposition')">Proposition <span class="arrow-icon">&gt;</span></button>
+    <button (click)="onUpdateStatus('Won')">Won</button>
   </div>
   <div class="details-body">
     <h2>{{ selectedLead.opportunityName }}</h2>
@@ -111,11 +119,5 @@
     <p>Phone: {{ selectedLead.contactPhone }}</p>
     <p *ngIf="selectedLead.amount">Amount: {{ selectedLead.amount | currency }}</p>
     <p>Current Status: {{ selectedLead.status }}</p>
-  </div>
-  <div class="details-footer">
-    <button (click)="onUpdateStatus('New')">New</button>
-    <button (click)="onUpdateStatus('Qualified')">Qualified</button>
-    <button (click)="onUpdateStatus('Proposition')">Proposition</button>
-    <button (click)="onUpdateStatus('Won')">Won</button>
   </div>
 </div>

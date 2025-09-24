@@ -18,9 +18,7 @@ export class CreateCrmComponent implements OnInit {
   ngOnInit(): void {
     // For demonstration, populate with some initial data
     this.leads = [
-      { id: 1, companyName: 'ABC Company', contactName: 'John Doe', opportunityName: 'ABC\'s opportunity', contactEmail: 'john@abc.com', contactPhone: '123-456-7890', status: 'New' },
-      { id: 2, companyName: 'DCB Company', contactName: 'Jane Smith', opportunityName: 'DCB\'s opportunity', contactEmail: 'jane@dcb.com', contactPhone: '987-654-3210', amount: 1000, status: 'Qualified' },
-      { id: 3, companyName: 'XYZ Corp', contactName: 'Peter Jones', opportunityName: 'XYZ\'s opportunity', contactEmail: 'peter@xyz.com', contactPhone: '555-123-4567', amount: 20000, status: 'Won' },
+      
     ];
   }
 

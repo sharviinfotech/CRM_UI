@@ -11,14 +11,14 @@ export const MENU: MenuItem[] = [
                 label: 'Dashboard',
                 link: '/dashboard',
                 parentId: 2,
-                icon: 'bx-home-circle',
+                icon: 'bx-grid-alt',
             },
             {
                 id:2,
                 label: 'Create',
                 link: '/create_crm',
                 parentId: 2,
-                icon: 'bx-home-circle',
+                icon: 'bx-user-plus',
             },
 
 
