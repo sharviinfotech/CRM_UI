@@ -1,1 +1,121 @@
-<p>create-crm works!</p>
+<div class="pipeline-container" *ngIf="!showLeadDetails">
+  <div class="pipeline-column">
+    <h3>New <button class="add-button" (click)="onNewLeadFormToggle('New')">+</button></h3>
+    <div class="lead-form" *ngIf="addFormTab === 'New'">
+      <form #addForm="ngForm" (ngSubmit)="onAddLead(addForm)">
+        <input type="text" name="companyName" placeholder="Company Name" ngModel required>
+        <input type="text" name="contactName" placeholder="Contact Name" ngModel required>
+        <input type="text" name="opportunityName" placeholder="Opportunity's Name" ngModel required>
+        <input type="email" name="contactEmail" placeholder="Contact Email" ngModel>
+        <input type="tel" name="contactPhone" placeholder="Contact Phone" ngModel>
+        <input type="number" name="amount" placeholder="Amount" ngModel>
+        <div class="form-buttons">
+          <button type="submit" [disabled]="!addForm.valid">Add</button>
+          <button type="button" (click)="onNewLeadFormToggle('New')">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <div class="lead-list">
+      <div class="lead-card" *ngFor="let lead of getLeadsByStatus('New')" (click)="onSelectLead(lead)">
+        <p>{{ lead.opportunityName }}</p>
+        <p>{{ lead.companyName }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pipeline-column">
+    <h3>Qualified <button class="add-button" (click)="onNewLeadFormToggle('Qualified')">+</button></h3>
+    <div class="lead-form" *ngIf="addFormTab === 'Qualified'">
+      <form #addForm="ngForm" (ngSubmit)="onAddLead(addForm)">
+        <input type="text" name="companyName" placeholder="Company Name" ngModel required>
+        <input type="text" name="contactName" placeholder="Contact Name" ngModel required>
+        <input type="text" name="opportunityName" placeholder="Opportunity's Name" ngModel required>
+        <input type="email" name="contactEmail" placeholder="Contact Email" ngModel>
+        <input type="tel" name="contactPhone" placeholder="Contact Phone" ngModel>
+        <input type="number" name="amount" placeholder="Amount" ngModel>
+        <div class="form-buttons">
+          <button type="submit" [disabled]="!addForm.valid">Add</button>
+          <button type="button" (click)="onNewLeadFormToggle('Qualified')">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <div class="lead-list">
+      <div class="lead-card" *ngFor="let lead of getLeadsByStatus('Qualified')" (click)="onSelectLead(lead)">
+        <p>{{ lead.opportunityName }}</p>
+        <p>{{ lead.companyName }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pipeline-column">
+    <h3>Proposition <button class="add-button" (click)="onNewLeadFormToggle('Proposition')">+</button></h3>
+    <div class="lead-form" *ngIf="addFormTab === 'Proposition'">
+      <form #addForm="ngForm" (ngSubmit)="onAddLead(addForm)">
+        <input type="text" name="companyName" placeholder="Company Name" ngModel required>
+        <input type="text" name="contactName" placeholder="Contact Name" ngModel required>
+        <input type="text" name="opportunityName" placeholder="Opportunity's Name" ngModel required>
+        <input type="email" name="contactEmail" placeholder="Contact Email" ngModel>
+        <input type="tel" name="contactPhone" placeholder="Contact Phone" ngModel>
+        <input type="number" name="amount" placeholder="Amount" ngModel>
+        <div class="form-buttons">
+          <button type="submit" [disabled]="!addForm.valid">Add</button>
+          <button type="button" (click)="onNewLeadFormToggle('Proposition')">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <div class="lead-list">
+      <div class="lead-card" *ngFor="let lead of getLeadsByStatus('Proposition')" (click)="onSelectLead(lead)">
+        <p>{{ lead.opportunityName }}</p>
+        <p>{{ lead.companyName }}</p>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="pipeline-column">
+    <h3>Won <button class="add-button" (click)="onNewLeadFormToggle('Won')">+</button></h3>
+    <div class="lead-form" *ngIf="addFormTab === 'Won'">
+      <form #addForm="ngForm" (ngSubmit)="onAddLead(addForm)">
+        <input type="text" name="companyName" placeholder="Company Name" ngModel required>
+        <input type="text" name="contactName" placeholder="Contact Name" ngModel required>
+        <input type="text" name="opportunityName" placeholder="Opportunity's Name" ngModel required>
+        <input type="email" name="contactEmail" placeholder="Contact Email" ngModel>
+        <input type="tel" name="contactPhone" placeholder="Contact Phone" ngModel>
+        <input type="number" name="amount" placeholder="Amount" ngModel>
+        <div class="form-buttons">
+          <button type="submit" [disabled]="!addForm.valid">Add</button>
+          <button type="button" (click)="onNewLeadFormToggle('Won')">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <div class="lead-list">
+      <div class="lead-card" *ngFor="let lead of getLeadsByStatus('Won')" (click)="onSelectLead(lead)">
+        <p>{{ lead.opportunityName }}</p>
+        <p>{{ lead.companyName }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lead-details-container" *ngIf="showLeadDetails && selectedLead">
+  <div class="details-header">
+    <button (click)="onUpdateStatus('Won')">Won</button>
+    <button (click)="onUpdateStatus('Lost')">Lost</button>
+    <button (click)="onBackToList()">Back to List</button>
+  </div>
+  <div class="details-body">
+    <h2>{{ selectedLead.opportunityName }}</h2>
+    <p>Company: {{ selectedLead.companyName }}</p>
+    <p>Contact: {{ selectedLead.contactName }}</p>
+    <p>Email: {{ selectedLead.contactEmail }}</p>
+    <p>Phone: {{ selectedLead.contactPhone }}</p>
+    <p *ngIf="selectedLead.amount">Amount: {{ selectedLead.amount | currency }}</p>
+    <p>Current Status: {{ selectedLead.status }}</p>
+  </div>
+  <div class="details-footer">
+    <button (click)="onUpdateStatus('New')">New</button>
+    <button (click)="onUpdateStatus('Qualified')">Qualified</button>
+    <button (click)="onUpdateStatus('Proposition')">Proposition</button>
+    <button (click)="onUpdateStatus('Won')">Won</button>
+  </div>
+</div>
