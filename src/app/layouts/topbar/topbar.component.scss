@@ -1,5 +1,5 @@
 .cancelBtn {
-  background-color: rgb(201, 9, 54);
+  background-color: white;
   
 }
 
@@ -27,7 +27,7 @@
   color: green;
 }
 .text-danger{
-  color:red
+  color:red;
 }
 .navbar {
   display: flex;
@@ -50,13 +50,14 @@
   text-transform: uppercase;
   letter-spacing: 3px;
  
-  background: linear-gradient(90deg, hsl(143, 100%, 59%), hsl(110, 73%, 50%)); /* red-pink gradient */
+  background: linear-gradient(90deg, oklab(99.21799999999999% -0.01056 0.00217), hsl(120, 6%, 93%)); /* red-pink gradient */
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
  
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
+
  
 
 ::ng-deep {@media (min-width: 1200px) {
