@@ -25,7 +25,35 @@
 .text-danger{
   color:red
 }
-
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #0d47a1, #1976d2); /* modern blue gradient */
+  padding: 0 20px;
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+ 
+.brand-text {
+  flex: 1;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 900;
+  margin-left: 20%;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+ 
+  background: linear-gradient(90deg, hsl(143, 100%, 59%), hsl(110, 73%, 50%)); /* red-pink gradient */
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ 
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+ 
 
 ::ng-deep {@media (min-width: 1200px) {
   .modal-xl {
