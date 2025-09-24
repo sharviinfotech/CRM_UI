@@ -11,6 +11,7 @@ import { LeadQualificationComponent } from './lead-qualification/lead-qualificat
 import { LeadProfileComponent } from './lead-profile/lead-profile.component';
 import { LeadAssignmentComponent } from './lead-assignment/lead-assignment.component';
 import { OpportunityManagementComponent } from './opportunity-management/opportunity-management.component';
+import { CreateCrmComponent } from './create-crm/create-crm.component';
 
 
 
@@ -63,6 +64,8 @@ import { OpportunityManagementComponent } from './opportunity-management/opportu
   
     // OpportunityManagementComponent
 
+  
+    //CreateCrmComponent
   ]
 })
 export class DashboardsModule {}
