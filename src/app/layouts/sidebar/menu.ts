@@ -13,13 +13,6 @@ export const MENU: MenuItem[] = [
                 parentId: 2,
                 icon: 'bx-home-circle',
             },
-            {
-                id: 2,
-                label: 'Create',
-                link: '/create',
-                parentId: 2,
-                icon: 'bx-home-circle',
-            }
 
 
             //  {
