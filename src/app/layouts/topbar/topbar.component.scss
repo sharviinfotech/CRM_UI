@@ -1,7 +1,4 @@
-.cancelBtn {
-  background-color: white;
-  
-}
+
 
 .navbar-header {
    background: linear-gradient(
@@ -9,6 +6,8 @@
     #1e3c72 0%,
     #2a5298 100%
   ) center center / cover !important;
+  font-family: "Times New Roman", Times, serif !important;
+letter-spacing: 0.1px;
   // background-image: linear-gradient(to right, #6ba3cd, #031c2e) !important;
     //  background: url("/assets/images/bg5.jpg") no-repeat center center / cover !important;
 
@@ -46,16 +45,16 @@
   text-align: center;
   font-size: 20px;
   font-weight: 900;
-  margin-left: 20%;
   text-transform: uppercase;
   letter-spacing: 3px;
  
-  background: linear-gradient(90deg, oklab(99.21799999999999% -0.01056 0.00217), hsl(120, 6%, 93%)); /* red-pink gradient */
+  background:white;/* red-pink gradient */
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
  
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.3px;
 }
 
  

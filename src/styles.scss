@@ -252,6 +252,10 @@ table th {
     background-color: #218838 !important;
     color: white !important;
   }
+  .btnLogout {
+  border: 1px solid white !important;
+  
+}
 
   .btnAuthorize{
     padding: 10px 10px;
@@ -275,66 +279,7 @@ table th {
   }
 
 
-  .btnEdit{
-    // padding: 7px;
-    background: #411bcc ;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer;
-    color: white;
-  }
-   
-  .btnEdit:hover {
-    background-color: #411bcc;
-    color: white !important;
-  }
-  .btnBack{
-    padding: 10px 10px;
-    background: #433eb1 ;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer;
-    color: white;
-  }
-  .btnCross{
-    margin-top: 0px;
-    background: red !important;
-    color: white;
-    border: none;
-    padding: 10px !important;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .btnDelete{
-    margin-top: 15px !important;
-    background: red !important;
-    color: white;
-    border: none;
-    padding: 10px !important;
-    border-radius: 5px;
-  }
-  .btnReset{
-    margin-top: 15px;
-    background: #1226c9;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-  }
-   
-  .btnCancel{
-    padding: 10px 20px;
-    background:rgb(201, 9, 54) !important;
-    
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer;
-    color: white;
-  }
-  .btnCancel:hover {
-    background-color:rgb(201, 9, 54) !important;
-    color: white !important;
-  }
+  
   .btnSumaaryprint{
     padding: 10px 10px;
     background: #2c75c4 ;
@@ -403,13 +348,7 @@ table th {
     color: white ;
   }
    
-  .btn {
-    padding: 7px !important;
-    font-size: 16px !important;
-    cursor: pointer !important;
-    border: none !important;
-    
-  }
+ 
 //* Force white background for the entire calendar header */
 .mat-calendar-header {
   background-color: white !important;
@@ -482,6 +421,7 @@ table th {
     color: brown;
     // background-color: #ffffff ;
     text-align: center;
+    font-family: 'Times New Roman', Times, serif !important;
   }
    
   .card-body-LE {
@@ -498,18 +438,7 @@ table th {
   padding: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   }
-  .btnSave{
-    padding: 10px 10px;
-    background: #057e1b !important;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer;
-    color: white !important;
-  }
-  .btnSave:hover {
-    background-color: #218838 !important;
-    color: white !important;
-  }
+
   /* 🔹 UPDATED: Changed from 3 columns to 4 columns per row */
   .form-grid {
     display: grid;
@@ -715,3 +644,122 @@ table th {
   .form-buttons .btn-secondary:hover {
     background: #5a6268;
   }
+  // new Button css
+  .btn {
+    padding: 5px 10px 5px 10px !important;;
+    font-size: 14px !important;
+    cursor: pointer !important;
+   
+   
+  }
+  .btnSave{
+    padding: 10px 10px;
+    background: #057e1b !important;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white !important;
+  }
+  .btnSave:hover {
+    background-color: white !important;
+    color: #411bcc  !important;
+    border: 1px solid #411bcc  !important;
+  }
+  .btnEdit{
+    // padding: 7px;
+    background: #411bcc ;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+  }
+   
+  .btnEdit:hover {
+    background-color: white !important;
+    color: #411bcc !important;
+    border: 1px solid #411bcc !important;
+  }
+  .btnAdd{
+    // padding: 7px;
+    background: #411bcc ;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+  }
+   
+  .btnAdd:hover {
+    background-color: white !important;
+    color: #411bcc !important;
+    border: 1px solid #411bcc !important;
+  }
+  .btnBack{
+    padding: 10px 10px;
+    background: #433eb1 ;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+  }
+  .btnBack:hover{
+    background-color: white !important;
+    color: #433eb1 !important;
+    border: 1px solid #433eb1 !important;
+  }
+  .btnCross{
+    margin-top: 0px;
+    background: red !important;
+    color: white;
+    border: none;
+    padding: 10px !important;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+   .btnBack:hover{
+    background-color: white !important;
+    color: red !important;
+    border: 1px solid red !important;
+  }
+  .btnDelete{
+    margin-top: 15px !important;
+    background: red !important;
+    color: white;
+    border: none;
+    padding: 10px !important;
+    border-radius: 5px;
+  }
+   .btnDelete:hover{
+    background-color: white !important;
+    color: red !important;
+    border: 1px solid red !important;
+  }
+  .btnReset{
+    margin-top: 15px;
+    background: #1226c9;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+  }
+   .btnReset:hover{
+    background-color: white !important;
+    color: #1226c9 !important;
+    border: 1px solid #1226c9 !important;
+  }
+   
+  .btnCancel{
+    padding: 10px 20px;
+    background:rgb(201, 9, 54) !important;
+   
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+  }
+    .btnReset:hover{
+    background-color: white !important;
+    color: rgb(201, 9, 54) !important;
+    border: 1px solid rgb(201, 9, 54) !important;
+  }
+ 
+ 
