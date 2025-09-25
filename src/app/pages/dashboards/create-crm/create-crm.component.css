@@ -1,3 +1,8 @@
+/*
+  ========================
+  Pipeline & General Layout
+  ========================
+*/
 .pipeline-container {
   display: flex;
   gap: 1rem;
@@ -12,26 +17,19 @@
   min-width: 250px;
   background-color: #4a7c8e;
   color: white;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.pipeline-column:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25);
+  color: #fff;
 }
 
 .pipeline-column h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.add-button {
-  background-color: transparent;
-  border: none;
-  font-size: 1.5rem;
-  font-weight: bold;
-  cursor: pointer;
-  color: white;
-  transition: color 0.2s;
-}
-
-.add-button:hover {
-  color: #2731b8;
 }
 
 .lead-list {
@@ -41,6 +39,11 @@
   margin-top: 1rem;
 }
 
+/*
+  ========================
+  Lead Card
+  ========================
+*/
 .lead-card {
   background-color: #4a7c8e;
   border: 1px solid #ddd;
@@ -49,13 +52,22 @@
   padding: 0.75rem;
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.2s;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  border: 1px solid #ccc;
 }
 
 .lead-card:hover {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+  color: black;
 }
 
+/*
+  ========================
+  Lead Details View
+  ========================
+*/
 .lead-details-container {
   background-color: #4a7c8e;
   padding: 2rem;
@@ -112,6 +124,18 @@
   flex: 1;
 }
 
+.separator-line {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 20px 0;
+}
+
+/*
+  ========================
+  Lead Form
+  ========================
+*/
 .lead-form {
   background-color: #4a7c8e;
   padding: 1rem;
@@ -157,7 +181,74 @@
   color: white;
 }
 
-/* New button styles to match the screenshots */
+/*
+  ========================
+  Add Button
+  ========================
+*/
+.add-button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.add-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25);
+  background-color: #4a7c8e;
+  color: #2731b8;
+}
+/*
+  ========================
+  Lead Details View
+  ========================
+*/
+.lead-details-view {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card {
+  background-color: #4a7c8e;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  color: white;
+}
+
+.details-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/*
+  ========================
+  Details Card
+  ========================
+*/
+.details-card {
+  /* Inherits card styles from the .card class */
+  position: relative; /* This is the key change */
+  overflow: hidden; /* Ensures the animation doesn't bleed outside the card */
+}
+
+.details-body {
+  /* Add padding and other layout-specific styles here if needed */
+  padding-top: 1rem;
+  padding-right: 15rem; /* Add space for the animation */
+}
+
+/*
+  ========================
+  Status Buttons (Arrow)
+  ========================
+*/
 .status-button {
   background-color: #383e44;
   color: #b0b5b8;
@@ -202,4 +293,55 @@
 
 .status-button.active:after {
   border-left-color: #4CAF50;
+}
+
+/* ... existing CSS ... */
+
+/* Styles for the Lottie animation container */
+.won-animation-lottie-container {
+  position: absolute; /* Position it relative to .details-card */
+  top: 0;
+  left: 0; /* Cover the entire card body */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* Stack the rocket and text */
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(74, 124, 142, 0.9); /* Semi-transparent background */
+  opacity: 0; /* Start hidden */
+  pointer-events: none; /* Allows clicks to pass through when hidden */
+  transition: opacity 0.5s ease-in-out; /* Smooth fade in/out */
+  z-index: 10; /* Ensure it's above other content */
+}
+
+.won-animation-lottie-container.active {
+  opacity: 1; /* Fade in when active */
+  pointer-events: all; /* Enable interaction if needed, though usually not for this */
+}
+
+/* Style for the Lottie player itself (inside the container) */
+.won-animation-lottie-container ng-lottie {
+  width: 250px; /* Adjust size of the rocket animation */
+  height: 250px;
+}
+
+.won-text-overlay {
+  margin-top: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff; /* White text for "Opportunity Won!" */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: add shadow for readability */
+}
+
+/* Ensure .details-card is a positioning context for the absolute animation */
+.details-card {
+  position: relative; /* THIS IS CRUCIAL */
+  overflow: hidden; /* Hide parts of the animation that go outside the card */
+  /* ... other .details-card styles ... */
+}
+
+/* Hide the regular details body content when the animation is active */
+.won-animation-lottie-container.active + .details-body {
+    display: none; /* Hide the details text when animation is playing */
 }

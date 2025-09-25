@@ -6457,6 +6457,11 @@ long@^5.0.0:
   resolved "https://registry.npmjs.org/long/-/long-5.2.3.tgz"
   integrity sha512-lcHwpNoggQTObv5apGNCTdJrO69eHOZMi4BNC+rTLER8iHAqGrUVeLh/irVIM7zTw2bOXA8T6uNPeujwOLg/2Q==
 
+lottie-web@^5.13.0:
+  version "5.13.0"
+  resolved "https://registry.npmjs.org/lottie-web/-/lottie-web-5.13.0.tgz"
+  integrity sha512-+gfBXl6sxXMPe8tKQm7qzLnUy5DUPJPKIyRHwtpCpyUEYjHYRJC/5gjUvdkuO2c3JllrPtHXH5UJJK8LRYl5yQ==
+
 lru-cache@^10.0.1:
   version "10.2.2"
   resolved "https://registry.npmjs.org/lru-cache/-/lru-cache-10.2.2.tgz"
@@ -6947,6 +6952,14 @@ ngx-lightbox@^3.0.0:
   dependencies:
     file-saver "^2.0.5"
     ngx-filesaver "14.0.0"
+
+ngx-lottie@^20.0.0:
+  version "20.0.0"
+  resolved "https://registry.npmjs.org/ngx-lottie/-/ngx-lottie-20.0.0.tgz"
+  integrity sha512-8BRgwXH98bjvRqm1RPgk1+3cWcwDmoHjM08/9klK2Bunq0bfyhpz38tub5RH5CK8yBtYjQna/7BB8z6d0kClFQ==
+  dependencies:
+    "@scarf/scarf" "^1.1.1"
+    tslib "^2.3.0"
 
 ngx-mask@^17.1.8:
   version "17.1.8"

@@ -96,21 +96,27 @@
   </div>
 </div>
 
-<div class="lead-details-container" *ngIf="showLeadDetails && selectedLead">
-  <div class="details-header">
-    <button class="back-arrow-button" (click)="onBackToList()">
-      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"></polyline>
-      </svg>
-    </button>
-    <button (click)="onUpdateStatus('Won')">Won</button>
-    <button (click)="onUpdateStatus('Lost')">Lost</button>
-    <div class="spacer"></div>
-    <button (click)="onUpdateStatus('New')">New <span class="arrow-icon">&gt;</span></button>
-    <button (click)="onUpdateStatus('Qualified')">Qualified <span class="arrow-icon">&gt;</span></button>
-    <button (click)="onUpdateStatus('Proposition')">Proposition <span class="arrow-icon">&gt;</span></button>
-    <button (click)="onUpdateStatus('Won')">Won</button>
+
+<div class="lead-details-view" *ngIf="showLeadDetails && selectedLead">
+
+  <div class="card buttons-card">
+    <div class="details-header">
+      <button class="back-arrow-button" (click)="onBackToList()">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button (click)="onUpdateStatus('Won')">Won</button>
+      <button (click)="onUpdateStatus('Lost')">Lost</button>
+      <div class="spacer"></div>
+      <button (click)="onUpdateStatus('New')">New <span class="arrow-icon">&gt;</span></button>
+      <button (click)="onUpdateStatus('Qualified')">Qualified <span class="arrow-icon">&gt;</span></button>
+      <button (click)="onUpdateStatus('Proposition')">Proposition <span class="arrow-icon">&gt;</span></button>
+      <button (click)="onUpdateStatus('Won')">Won</button>
+    </div>
   </div>
+
+  <div class="card details-card">
   <div class="details-body">
     <h2>{{ selectedLead.opportunityName }}</h2>
     <p>Company: {{ selectedLead.companyName }}</p>
@@ -119,5 +125,16 @@
     <p>Phone: {{ selectedLead.contactPhone }}</p>
     <p *ngIf="selectedLead.amount">Amount: {{ selectedLead.amount | currency }}</p>
     <p>Current Status: {{ selectedLead.status }}</p>
-  </div>
+
+    <div class="won-animation-lottie-container" [class.active]="showWonAnimation">
+      <ng-lottie
+        [options]="lottieOptions"
+        (animationCreated)="animationCreated($event)"
+        (loopComplete)="animationLoopComplete()"
+      ></ng-lottie>
+      <span class="won-text-overlay">Opportunity Won!</span>
+    </div>
+    </div>
+</div>
+  
 </div>
