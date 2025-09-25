@@ -177,7 +177,7 @@ export class Login2Component implements OnInit {
  
       // Login Api
       // this.store.dispatch(login({ userName: userName, password: password }));
-     
+     this.fullscreen()
         const  response   ={
             "message": "Login Successful",
             "status": 200,
@@ -275,7 +275,7 @@ export class Login2Component implements OnInit {
       this.spinner.hide();
       return;
     }
-  
+  this.fullscreen()
     const loginPayload = {
       userName: userName,
       userPassword: password
@@ -325,8 +325,31 @@ export class Login2Component implements OnInit {
       }
     );
   }
-  
-  
+  fullscreen() {
+  const elem = document.documentElement; // or document.body
+ 
+  if (!document.fullscreenElement) {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if ((elem as any).mozRequestFullScreen) {
+      (elem as any).mozRequestFullScreen();
+    } else if ((elem as any).webkitRequestFullscreen) {
+      (elem as any).webkitRequestFullscreen();
+    } else if ((elem as any).msRequestFullscreen) {
+      (elem as any).msRequestFullscreen();
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if ((document as any).mozCancelFullScreen) {
+      (document as any).mozCancelFullScreen();
+    } else if ((document as any).webkitExitFullscreen) {
+      (document as any).webkitExitFullscreen();
+    } else if ((document as any).msExitFullscreen) {
+      (document as any).msExitFullscreen();
+    }
+  }
+}
   
 
 }

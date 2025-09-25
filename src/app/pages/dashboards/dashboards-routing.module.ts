@@ -23,6 +23,9 @@ import { LeadProfileComponent } from './lead-profile/lead-profile.component';
 import { LeadAssignmentComponent } from './lead-assignment/lead-assignment.component';
 import { OpportunityManagementComponent } from './opportunity-management/opportunity-management.component';
 import { CreateCrmComponent } from './create-crm/create-crm.component';
+import { ChildoverviewComponent } from './childoverview/childoverview.component';
+import { ChildagentsComponent } from './childagents/childagents.component';
+
 
 
 
@@ -114,7 +117,19 @@ const routes: Routes = [
         path: 'create_crm',
         component: CreateCrmComponent
     },
-   
+    {
+        path: 'childoverview',
+        component: ChildoverviewComponent
+    },
+    {
+        path: 'childagents',
+        component: ChildagentsComponent
+    },
+      {
+        path: 'childdeals',
+        component: ChildagentsComponent
+    },
+     
    
    
 

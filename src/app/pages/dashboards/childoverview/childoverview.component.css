@@ -1,0 +1,151 @@
+/* General container for the entire dashboard */
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr; /* Two columns: main content and sidebar */
+  gap: 20px;
+  padding: 20px;
+  background-color: #f0f2f5; /* Light gray background */
+  font-family: Arial, sans-serif;
+}
+
+/* -------------------- Top KPIs Section -------------------- */
+
+.kpi-section {
+  grid-column: 1 / 2; /* Span the first column */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four columns for the KPI cards */
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.kpi-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.kpi-card.purple {
+  background-color: #5d3fd3; /* Dark purple from the image */
+}
+
+.kpi-card.blue {
+  background-color: #1e90ff; /* A shade of blue from the image */
+}
+
+.kpi-label {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 5px;
+}
+
+.kpi-value {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* -------------------- Main Content Section (Charts) -------------------- */
+
+.main-content {
+  grid-column: 1 / 2; /* Main content takes the first column */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns for the charts */
+  gap: 20px;
+}
+
+.chart-container {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 400px; /* Adjust height as needed */
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.chart-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.chart-placeholder {
+  flex-grow: 1; /* Makes the placeholder take up available space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  color: #aaa;
+}
+
+/* -------------------- Sidebar Section -------------------- */
+
+.sidebar {
+  grid-column: 2 / 3; /* Sidebar takes the second column */
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-card {
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.date-picker-placeholder, .dropdown-placeholder {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.help-section {
+  background-color: #f0f8ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 30px;
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* To contain the image */
+}
+
+.help-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.help-links a {
+  display: block;
+  color: #1e90ff;
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+.help-image-placeholder {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background-color: #ddd;
+  margin: 15px auto 0;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
