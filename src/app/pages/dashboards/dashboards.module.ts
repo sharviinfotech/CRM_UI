@@ -11,6 +11,10 @@ import { LeadProfileComponent } from './lead-profile/lead-profile.component';
 import { LeadAssignmentComponent } from './lead-assignment/lead-assignment.component';
 import { OpportunityManagementComponent } from './opportunity-management/opportunity-management.component';
 import { CreateCrmComponent } from './create-crm/create-crm.component';
+import { ChildoverviewComponent } from './childoverview/childoverview.component';
+import { ChildagentsComponent } from './childagents/childagents.component';
+import { ChilddealsComponent } from './childdeals/childdeals.component';
+
 
 
 
@@ -65,7 +69,11 @@ import { CreateCrmComponent } from './create-crm/create-crm.component';
     // OpportunityManagementComponent
 
   
-    CreateCrmComponent
+    CreateCrmComponent,
+    // ChilddealsComponent,
+    // ChildagentsComponent,
+    // ChildoverviewComponent,
+    
   ]
 })
 export class DashboardsModule {}
