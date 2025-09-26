@@ -6,21 +6,14 @@ export const MENU: MenuItem[] = [
     //     label: 'MENUITEMS.DASHBOARDS.TEXT',
     //     icon: 'bx-home-circle',
     //     subItems: [
-            // {
-            //     id: 2,
-            //     label: 'Dashboard',
-            //     link: '/dashboard',
-            //     parentId: 2,
-            //     icon: 'bx-grid-alt',
-            // },
-             {
-                id:2,
+            {
+                id: 2,
                 label: 'Dashboard',
-                link: '/childoverview',
+                link: '/dashboard',
                 parentId: 2,
                 icon: 'bx-grid-alt',
             },
-
+            
             {
                 id:2,
                 label: 'Create',
@@ -28,13 +21,13 @@ export const MENU: MenuItem[] = [
                 parentId: 2,
                 icon: 'bx-user-plus',
             },
-            //  {
-            //     id:2,
-            //     label: 'Dashboard',
-            //     link: '/childoverview',
-            //     parentId: 2,
-            //     icon: 'bx-grid-alt',
-            // },
+             {
+                id:2,
+                label: 'Overview',
+                link: '/childoverview',
+                parentId: 2,
+                icon: 'bx-user-plus',
+            },
              {
                 id:2,
                 label: 'Agents',
