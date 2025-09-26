@@ -1,8 +1,16 @@
 <div class="pipeline-container" *ngIf="!showLeadDetails">
+  <!-- Columns: New / Qualified / Proposition / Won -->
   <div class="pipeline-column">
-    <h3>New <button class="add-button" (click)="onNewLeadFormToggle('New')">+</button></h3>
+    <h3 class="pipeline-heading">
+      New
+      <button class="add-button" (click)="onNewLeadFormToggle('New')">
+        {{ addFormTab === 'New' ? 'X' : '+' }}
+      </button>
+      <span class="total-amount">{{ getTotalAmountByStatus('New') | currency:'INR':'symbol':'1.0-0' }}</span>
+    </h3>
+    <hr class="tab-divider">
     <div class="lead-form" *ngIf="addFormTab === 'New'">
-      <form #addForm="ngForm" (ngSubmit)="onAddLead(addForm)">
+      <form #addForm="ngForm" (ngSubmit)="onSaveLead(addForm)">
         <input type="text" name="companyName" placeholder="Company Name" ngModel required>
         <input type="text" name="contactName" placeholder="Contact Name" ngModel required>
         <input type="text" name="opportunityName" placeholder="Opportunity's Name" ngModel required>
@@ -10,8 +18,8 @@
         <input type="tel" name="contactPhone" placeholder="Contact Phone" ngModel>
         <input type="number" name="amount" placeholder="Amount" ngModel>
         <div class="form-buttons">
-          <button type="submit" [disabled]="!addForm.valid">Add</button>
-          <button type="button" (click)="onNewLeadFormToggle('New')">Cancel</button>
+          <button type="submit" [disabled]="!addForm.valid">Save</button>
+          <button type="button" (click)="onSaveAndNextLead(addForm)" [disabled]="!addForm.valid">Save & Next</button>
         </div>
       </form>
     </div>
@@ -23,22 +31,12 @@
     </div>
   </div>
 
+  <!-- Repeat for Qualified / Proposition / Won columns (similar structure) -->
   <div class="pipeline-column">
-    <h3>Qualified <button class="add-button" (click)="onNewLeadFormToggle('Qualified')">+</button></h3>
-    <div class="lead-form" *ngIf="addFormTab === 'Qualified'">
-      <form #addForm="ngForm" (ngSubmit)="onAddLead(addForm)">
-        <input type="text" name="companyName" placeholder="Company Name" ngModel required>
-        <input type="text" name="contactName" placeholder="Contact Name" ngModel required>
-        <input type="text" name="opportunityName" placeholder="Opportunity's Name" ngModel required>
-        <input type="email" name="contactEmail" placeholder="Contact Email" ngModel>
-        <input type="tel" name="contactPhone" placeholder="Contact Phone" ngModel>
-        <input type="number" name="amount" placeholder="Amount" ngModel>
-        <div class="form-buttons">
-          <button type="submit" [disabled]="!addForm.valid">Add</button>
-          <button type="button" (click)="onNewLeadFormToggle('Qualified')">Cancel</button>
-        </div>
-      </form>
-    </div>
+    <h3 class="pipeline-heading">Qualified
+      <span class="total-amount">{{ getTotalAmountByStatus('Qualified') | currency:'INR':'symbol':'1.0-0' }}</span>
+    </h3>
+    <hr class="tab-divider">
     <div class="lead-list">
       <div class="lead-card" *ngFor="let lead of getLeadsByStatus('Qualified')" (click)="onSelectLead(lead)">
         <p>{{ lead.opportunityName }}</p>
@@ -48,21 +46,10 @@
   </div>
 
   <div class="pipeline-column">
-    <h3>Proposition <button class="add-button" (click)="onNewLeadFormToggle('Proposition')">+</button></h3>
-    <div class="lead-form" *ngIf="addFormTab === 'Proposition'">
-      <form #addForm="ngForm" (ngSubmit)="onAddLead(addForm)">
-        <input type="text" name="companyName" placeholder="Company Name" ngModel required>
-        <input type="text" name="contactName" placeholder="Contact Name" ngModel required>
-        <input type="text" name="opportunityName" placeholder="Opportunity's Name" ngModel required>
-        <input type="email" name="contactEmail" placeholder="Contact Email" ngModel>
-        <input type="tel" name="contactPhone" placeholder="Contact Phone" ngModel>
-        <input type="number" name="amount" placeholder="Amount" ngModel>
-        <div class="form-buttons">
-          <button type="submit" [disabled]="!addForm.valid">Add</button>
-          <button type="button" (click)="onNewLeadFormToggle('Proposition')">Cancel</button>
-        </div>
-      </form>
-    </div>
+    <h3 class="pipeline-heading">Proposition
+      <span class="total-amount">{{ getTotalAmountByStatus('Proposition') | currency:'INR':'symbol':'1.0-0' }}</span>
+    </h3>
+    <hr class="tab-divider">
     <div class="lead-list">
       <div class="lead-card" *ngFor="let lead of getLeadsByStatus('Proposition')" (click)="onSelectLead(lead)">
         <p>{{ lead.opportunityName }}</p>
@@ -72,21 +59,10 @@
   </div>
 
   <div class="pipeline-column">
-    <h3>Won <button class="add-button" (click)="onNewLeadFormToggle('Won')">+</button></h3>
-    <div class="lead-form" *ngIf="addFormTab === 'Won'">
-      <form #addForm="ngForm" (ngSubmit)="onAddLead(addForm)">
-        <input type="text" name="companyName" placeholder="Company Name" ngModel required>
-        <input type="text" name="contactName" placeholder="Contact Name" ngModel required>
-        <input type="text" name="opportunityName" placeholder="Opportunity's Name" ngModel required>
-        <input type="email" name="contactEmail" placeholder="Contact Email" ngModel>
-        <input type="tel" name="contactPhone" placeholder="Contact Phone" ngModel>
-        <input type="number" name="amount" placeholder="Amount" ngModel>
-        <div class="form-buttons">
-          <button type="submit" [disabled]="!addForm.valid">Add</button>
-          <button type="button" (click)="onNewLeadFormToggle('Won')">Cancel</button>
-        </div>
-      </form>
-    </div>
+    <h3 class="pipeline-heading">Won
+      <span class="total-amount">{{ getTotalAmountByStatus('Won') | currency:'INR':'symbol':'1.0-0' }}</span>
+    </h3>
+    <hr class="tab-divider">
     <div class="lead-list">
       <div class="lead-card" *ngFor="let lead of getLeadsByStatus('Won')" (click)="onSelectLead(lead)">
         <p>{{ lead.opportunityName }}</p>
@@ -96,45 +72,87 @@
   </div>
 </div>
 
-
+<!-- Lead Details View -->
 <div class="lead-details-view" *ngIf="showLeadDetails && selectedLead">
-
   <div class="card buttons-card">
     <div class="details-header">
-      <button class="back-arrow-button" (click)="onBackToList()">
-        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+      <!-- Back Button -->
+      <button class="status-button-left" (click)="onBackToList()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
       </button>
-      <button (click)="onUpdateStatus('Won')">Won</button>
-      <button (click)="onUpdateStatus('Lost')">Lost</button>
+      <!-- Lost Button -->
+      <button class="status-button" *ngIf="selectedLead?.status !== 'Won'" (click)="onUpdateStatus('Lost')">Lost</button>
       <div class="spacer"></div>
-      <button (click)="onUpdateStatus('New')">New <span class="arrow-icon">&gt;</span></button>
-      <button (click)="onUpdateStatus('Qualified')">Qualified <span class="arrow-icon">&gt;</span></button>
-      <button (click)="onUpdateStatus('Proposition')">Proposition <span class="arrow-icon">&gt;</span></button>
-      <button (click)="onUpdateStatus('Won')">Won</button>
+            <!-- Status Indicators -->
+      <ng-container [ngSwitch]="selectedLead?.status">
+        <!-- New -->
+        <ng-container *ngSwitchCase="'New'">
+          <button class="status-button active">New</button>
+          <button class="status-button" (click)="onUpdateStatus('Qualified')">Qualified</button>
+        </ng-container>
+
+        <!-- Qualified -->
+        <ng-container *ngSwitchCase="'Qualified'">
+          <button class="status-button active">Qualified</button>
+          <button class="status-button" (click)="onUpdateStatus('Proposition')">Proposition</button>
+        </ng-container>
+
+        <!-- Proposition -->
+        <ng-container *ngSwitchCase="'Proposition'">
+          <button class="status-button active">Proposition</button>
+          <button class="status-button" (click)="onUpdateStatus('Won')">Won</button>
+        </ng-container>
+
+        <!-- Won -->
+        <ng-container *ngSwitchCase="'Won'">
+          <button class="status-button active">Won</button>
+        </ng-container>
+      </ng-container>
     </div>
   </div>
 
   <div class="card details-card">
-  <div class="details-body">
-    <h2>{{ selectedLead.opportunityName }}</h2>
-    <p>Company: {{ selectedLead.companyName }}</p>
-    <p>Contact: {{ selectedLead.contactName }}</p>
-    <p>Email: {{ selectedLead.contactEmail }}</p>
-    <p>Phone: {{ selectedLead.contactPhone }}</p>
-    <p *ngIf="selectedLead.amount">Amount: {{ selectedLead.amount | currency }}</p>
-    <p>Current Status: {{ selectedLead.status }}</p>
+    <div class="details-body">
+      <h2>{{ selectedLead.opportunityName }}</h2>
+      <p>Company: {{ selectedLead.companyName }}</p>
+      <p>Contact: {{ selectedLead.contactName }}</p>
+      <p>Email: {{ selectedLead.contactEmail }}</p>
+      <p>Phone: {{ selectedLead.contactPhone }}</p>
+      <p *ngIf="selectedLead.amount">Amount: {{ selectedLead.amount | currency:'INR':'symbol':'1.0-0'}}</p>
+      <p>Current Status: {{ selectedLead.status }}</p>
 
-    <div class="won-animation-lottie-container" [class.active]="showWonAnimation">
-      <ng-lottie
-        [options]="lottieOptions"
-        (animationCreated)="animationCreated($event)"
-        (loopComplete)="animationLoopComplete()"
-      ></ng-lottie>
-      <span class="won-text-overlay">Opportunity Won!</span>
+      <!-- Show previous tab remarks -->
+  <div *ngIf="selectedLead.status !== 'Won'" class="remark-section">
+    <ng-container *ngFor="let s of ['New','Qualified','Proposition']">
+      <div *ngIf="selectedLead.remarks && selectedLead.remarks[s] && s !== selectedLead.status">
+        <p class="previous-remark">{{ s }} tab Remark: {{ selectedLead.remarks[s] }}</p>
+      </div>
+    </ng-container>
+
+    <!-- Current tab remark -->
+    <label for="remark">Remark:</label>
+    <textarea id="remark" [(ngModel)]="currentRemark" rows="2" placeholder="Enter remark..." class="flat-underline"></textarea>
+    
+    <div class="remark-buttons">
+      <button type="button" class="remark-button" (click)="saveRemark()">Save</button>
+      <button type="button" class="remark-button" (click)="saveAndNext()">Save & Next</button>
     </div>
+  </div>
+
+
+          <!-- Won animation/image -->
+    <div *ngIf="showWonAnimation" class="won-animation-container">
+      <img 
+        src="assets/images/Won animation.png" 
+        alt="Won!" 
+        class="won-animation-img"
+      />
     </div>
-</div>
-  
+
+    </div>
+  </div>
 </div>

@@ -5,7 +5,7 @@
 */
 .pipeline-container {
   display: flex;
-  gap: 1rem;
+  gap: 10px;
   padding: 1rem;
   align-items: flex-start;
 }
@@ -15,7 +15,7 @@
   border-radius: 8px;
   padding: 1rem;
   min-width: 250px;
-  background-color: #4a7c8e;
+  background-color: #383e44;
   color: white;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
@@ -31,6 +31,20 @@
   justify-content: space-between;
   align-items: center;
 }
+
+
+.total-amount {
+  font-weight: bold;
+  color: white;
+  margin-left: 10px;
+}
+
+.tab-divider {
+  border: 0;
+  border-top: 2px solid #ddd; /* line color */
+  margin: 5px 0 15px;         /* spacing */
+}
+
 
 .lead-list {
   display: flex;
@@ -69,7 +83,7 @@
   ========================
 */
 .lead-details-container {
-  background-color: #4a7c8e;
+  background-color: #383e44;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -83,7 +97,7 @@
   gap: 1rem;
 }
 
-.details-header button {
+/* .details-header button {
   padding: 0.5rem 1rem;
   cursor: pointer;
   background-color: #4a7c8e;
@@ -91,7 +105,7 @@
   border: 1px solid white;
   border-radius: 4px;
   transition: background-color 0.2s, color 0.2s;
-}
+} */
 
 .details-header button:hover {
   background-color: white;
@@ -214,7 +228,7 @@
 }
 
 .card {
-  background-color: #4a7c8e;
+  background-color: #383e44;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
@@ -244,104 +258,320 @@
   padding-right: 15rem; /* Add space for the animation */
 }
 
-/*
-  ========================
-  Status Buttons (Arrow)
-  ========================
-*/
 .status-button {
   background-color: #383e44;
   color: #b0b5b8;
   border: none;
-  border-radius: 0;
-  padding: 0.75rem 1.25rem;
+  height: 38px; /* fixed height */
+  gap:5px;
+  line-height: 50%; /* vertical center */
+  padding: 0 20px; /* horizontal padding */
   position: relative;
   cursor: pointer;
+  display: inline-block;
+  z-index: 1;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+  margin-right: 10px; /* spacing between buttons */
 }
 
-.status-button:before,
-.status-button:after {
+/* Right arrow after each button */
+.status-button::after {
   content: '';
   position: absolute;
   top: 0;
-  bottom: 0;
-  border-style: solid;
-  border-width: 0.75rem 0.5rem;
-  border-color: transparent #383e44 transparent transparent;
-  z-index: 1;
+  right: -25px; /* adjust overlap */
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent; /* half of button height */
+  border-bottom: 20px solid transparent;
+  border-left: 25px solid #383e44; /* same as button bg */
+  z-index: 0;
 }
 
-.status-button:before {
-  left: -1rem;
-  border-left-color: #202123;
-  border-width: 0.75rem 0.5rem 0.75rem 0.5rem;
+/* Hover effect: change button and arrow together */
+.status-button:hover {
+  background-color: #4CAF50;
+  color: white;
 }
 
-.status-button:after {
-  right: -0.5rem;
-  border-left-color: #383e44;
+.status-button:hover::after {
+  border-left-color: #4CAF50;
 }
 
-.status-button:first-of-type:before {
-  display: none;
-}
-
+/* Active state */
 .status-button.active {
   background-color: #4CAF50;
   color: white;
 }
 
-.status-button.active:after {
+.status-button.active::after {
+  border-left-color: white;
+}
+
+.status-button.active:hover::after {
+  border-left-color: #4CAF50;    /* Arrow turns green */
+}
+
+.status-button-left {
+  background-color: #383e44;
+  color: #b0b5b8;
+  border: none;
+  height: 38px;                  /* fixed height */
+  padding: 0 20px;               /* horizontal padding */
+  position: relative;
+  cursor: pointer;
+  display: inline-flex;           /* flex to center content */
+  align-items: center;            /* vertical center */
+  justify-content: center;        /* horizontal center */
+  gap: 8px;                       /* space between SVG and text */
+  z-index: 1;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+  margin-left: 5px;
+}
+
+/* Left arrow before the button */
+.status-button-left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -25px;                     /* adjust overlap */
+  width: 0;
+  height: 0;
+  border-top: 19px solid transparent; 
+  border-bottom: 19px solid transparent;
+  border-right: 25px solid #383e44; 
+  z-index: 0;
+}
+
+/* Hover effect */
+.status-button-left:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.status-button-left:hover::before {
+  border-right-color: #4CAF50;
+}
+
+
+/* SVG inside button */
+.status-button-left svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor; /* inherit button color */
+  display: block;
+}
+
+
+/* Remark textarea */
+.flat-underline {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color:#383e44;
+  color: white;
+}
+
+.remark-buttons {
+  display: flex;
+  gap: 8px;           /* space between buttons */
+  margin-top: 8px;
+}
+
+/* Common style for both buttons */
+.remark-buttons .remark-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  line-height: 38px;
+  padding: 0 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  background-color: #383e44;
+  color: #b0b5b8;
+  border: none;
+  cursor: pointer;
+  position: relative; /* needed for arrow */
+  transition: background-color 0.3s, color 0.3s;
+  z-index: 1;
+}
+
+/* Add right-pointing arrow for both buttons 
+.remark-buttons .remark-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -19px;                 
+  height: 0;
+  border-top: 20px solid transparent;   
+  border-bottom: 20px solid transparent;
+  border-left: 19px solid #383e44;     
+  z-index: 0;
+}
+*/
+/* Hover effect: button + arrow change color together */
+.remark-buttons .remark-button:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.remark-buttons .remark-button:hover::after {
   border-left-color: #4CAF50;
 }
 
-/* ... existing CSS ... */
 
-/* Styles for the Lottie animation container */
-.won-animation-lottie-container {
-  position: absolute; /* Position it relative to .details-card */
-  top: 0;
-  left: 0; /* Cover the entire card body */
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column; /* Stack the rocket and text */
-  justify-content: center;
+.won-animation-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+.won-animation-img {
+  width: 500px; /* adjust size */
+  height: auto;
+  animation: floatUp 2s ease-in-out forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+
+/*Bubble type button styling*/
+/* Add this to create-crm.component.css */
+
+/* Base button styling (adjust sizes to match your design) */
+.add-button {
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  background-color: rgba(74, 124, 142, 0.9); /* Semi-transparent background */
-  opacity: 0; /* Start hidden */
-  pointer-events: none; /* Allows clicks to pass through when hidden */
-  transition: opacity 0.5s ease-in-out; /* Smooth fade in/out */
-  z-index: 10; /* Ensure it's above other content */
+  justify-content: center;
+  width: 36px;              /* tweak size */
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;  /* keep transparent background */
+  border: 2px solid rgba(0,0,0,0.08);
+  font-weight: 700;
+  cursor: pointer;
+  overflow: visible;        /* allow bubble to animate outside if needed */
+  z-index: 1;
 }
 
-.won-animation-lottie-container.active {
-  opacity: 1; /* Fade in when active */
-  pointer-events: all; /* Enable interaction if needed, though usually not for this */
+/* Optional: tweak text (plus / X) so it reads above bubble */
+.add-button > * {
+  position: relative;
+  z-index: 3;
 }
 
-/* Style for the Lottie player itself (inside the container) */
-.won-animation-lottie-container ng-lottie {
-  width: 250px; /* Adjust size of the rocket animation */
-  height: 250px;
+/* The translucent 'water bubble' */
+.add-button::before {
+  content: '';
+  pointer-events: none;         /* keep button clickable */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 18px;                  /* bubble size */
+  height: 18px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    rgba(255,255,255,0.85) 0%,
+    rgba(255,255,255,0.55) 6%,
+    rgba(173,216,230,0.18) 40%,
+    rgba(173,216,230,0.12) 60%,
+    rgba(173,216,230,0.06) 100%
+  );
+  box-shadow:
+    0 1px 6px rgba(0,0,0,0.06) inset,
+    0 6px 14px rgba(0,0,0,0.04);
+  opacity: 0.95;
+  z-index: 2;
+  transform-origin: center;
+  animation: bubbleFloat 3.6s ease-in-out infinite;
+  will-change: transform, opacity;
+  mix-blend-mode: screen; /* subtle blend */
 }
 
-.won-text-overlay {
-  margin-top: 1rem;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #fff; /* White text for "Opportunity Won!" */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: add shadow for readability */
+/* Add a second faint bubble for realism (optional) */
+.add-button::after {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  left: 66%;
+  top: 36%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(173,216,230,0.08));
+  opacity: 0.7;
+  z-index: 1;
+  transform-origin: center;
+  animation: bubbleFloatSmall 4.8s ease-in-out infinite;
+  mix-blend-mode: screen;
 }
 
-/* Ensure .details-card is a positioning context for the absolute animation */
-.details-card {
-  position: relative; /* THIS IS CRUCIAL */
-  overflow: hidden; /* Hide parts of the animation that go outside the card */
-  /* ... other .details-card styles ... */
+/* Large bubble floating animation: subtle scale + translate + fade */
+@keyframes bubbleFloat {
+  0% {
+    transform: translate(-50%, -50%) translateY(0) scale(0.92);
+    opacity: 0.95;
+  }
+  30% {
+    transform: translate(-50%, -60%) translateY(-2px) scale(1.02);
+    opacity: 0.98;
+  }
+  60% {
+    transform: translate(-50%, -72%) translateY(-6px) scale(0.98);
+    opacity: 0.88;
+  }
+  100% {
+    transform: translate(-50%, -90%) translateY(-10px) scale(0.94);
+    opacity: 0.78;
+  }
 }
 
-/* Hide the regular details body content when the animation is active */
-.won-animation-lottie-container.active + .details-body {
-    display: none; /* Hide the details text when animation is playing */
+/* Smaller bubble drift */
+@keyframes bubbleFloatSmall {
+  0% {
+    transform: translate(0,0) scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate(-4px, -6px) scale(0.95);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(-8px, -12px) scale(0.9);
+    opacity: 0.6;
+  }
+}
+
+
+/* Focus / hover polish */
+.add-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(173,216,230,0.12);
+}
+
+.add-button:hover::before {
+  animation-duration: 2.8s; /* slightly faster on hover */
+  opacity: 1;
 }
