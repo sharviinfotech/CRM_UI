@@ -25,6 +25,7 @@ import { OpportunityManagementComponent } from './opportunity-management/opportu
 import { CreateCrmComponent } from './create-crm/create-crm.component';
 import { ChildoverviewComponent } from './childoverview/childoverview.component';
 import { ChildagentsComponent } from './childagents/childagents.component';
+import { ChilddealsComponent } from './childdeals/childdeals.component';
 
 
 
@@ -127,7 +128,7 @@ const routes: Routes = [
     },
       {
         path: 'childdeals',
-        component: ChildagentsComponent
+        component: ChilddealsComponent
     },
      
    

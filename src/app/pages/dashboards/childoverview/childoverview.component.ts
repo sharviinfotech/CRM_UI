@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import Chart from 'chart.js/auto'; // Import Chart.js
 
 @Component({
   selector: 'app-childoverview',
@@ -8,97 +8,104 @@ import { Component } from '@angular/core';
 })
 export class ChildoverviewComponent {
    // Placeholder for KPI data
-  kpiData = [
-    { label: 'Total sales', value: '5.2M', color: 'purple' },
-    { label: 'Win rate', value: '16.92%', color: 'blue' },
-    // ... add all other KPI data here
-  ];
+  // Metric Data
+  totalSales = 5.2;
+  winRate = 16.92;
+  closeRate = 14.47;
+  avgDaysToClose = 60.7;
+  pipelineValue = 77.8;
+  openDeals = 1600;
+  weightedValue = 35.6;
+  avgOpenDealAge = 201.67;
 
-  // Placeholder for chart data
-  salesPipelineData: any;
-  wonDealsData: any;
-  dealLossReasonsData: any;
-  dealsProjectionData: any;
+  constructor() {}
 
-  // Placeholder for filter data (e.g., dropdown options)
-  dealOwners: string[] = ['All', 'John Doe', 'Jane Smith'];
-  dealStages: string[] = ['All', 'Negotiation', 'Proposal', 'Interview', 'Contact Made'];
-  pipelines: string[] = ['All', 'Pipeline A', 'Pipeline B'];
-  dealLabels: string[] = ['All', 'Label 1', 'Label 2'];
+  ngOnInit(): void {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-    // In a real application, you would fetch this data from an API
-    this.salesPipelineData = this.getSalesPipelineData();
-    this.wonDealsData = this.getWonDealsData();
-    this.dealLossReasonsData = this.getDealLossReasonsData();
-    this.dealsProjectionData = this.getDealsProjectionData();
+  ngAfterViewInit(): void {
+    this.renderWonDealsChart();
+    this.renderDealsProjectionChart();
+    this.renderSalesPipelineChart();
+    this.renderDealLossChart();
   }
 
-  // Example functions to simulate data fetching for charts
-  private getSalesPipelineData(): any {
-    // This would be the data for the donut chart (Sales pipeline)
-    return {
-      labels: ['Negotiation', 'Proposal', 'Interview', 'Contact Made', 'Closed Lost', 'Lead In'],
-      datasets: [{
-        data: [5.06, 9.64, 14.89, 18.49, 21.32, 28.63],
-        backgroundColor: ['#f8b4a2', '#a2d6f8', '#8f8fdf', '#5d5d8e', '#1c4966', '#3b94d9']
-      }]
-    };
+  renderWonDealsChart() {
+    new Chart("wonDealsChart", {
+      type: 'line',
+      data: {
+        labels: ['Nov 2024', 'Dec 2024', 'Jan 2025', 'Feb 2025', 'Mar 2025', 'Apr 2025', 'May 2025', 'Jun 2025', 'Jul 2025', 'Aug 2025', 'Sep 2025'],
+        datasets: [
+          {
+            label: 'Closed Value',
+            data: [600, 400, 700, 300, 200, 350, 600, 500, 480, 300, 580],
+            borderColor: '#007bff',
+            backgroundColor: 'rgba(0,123,255,0.2)',
+            tension: 0.4,
+            fill: true
+          },
+          {
+            label: 'Won Deals',
+            data: [8, 5, 9, 3, 4, 5, 8, 6, 5, 4, 7],
+            borderColor: '#28a745',
+            backgroundColor: 'rgba(40,167,69,0.2)',
+            tension: 0.4,
+            fill: true
+          }
+        ]
+      }
+    });
   }
 
-  private getWonDealsData(): any {
-    // This would be the data for the line chart (Won deals)
-    return {
-      labels: ['Oct 2024', 'Nov 2024', 'Dec 2024', 'Jan 2025', 'Feb 2025', 'Mar 2025', 'Apr 2025', 'May 2025', 'Jun 2025', 'Jul 2025', 'Aug 2025', 'Sep 2025'],
-      datasets: [
-        {
-          label: 'Closed value',
-          data: [500000, 300000, 700000, 400000, 550000, 350000, 500000, 800000, 450000, 600000, 500000, 700000],
-          borderColor: '#1e90ff',
-          fill: false
-        },
-        {
-          label: 'Won deals',
-          data: [5, 3, 7, 4, 5.5, 3.5, 5, 8, 4.5, 6, 5, 7],
-          borderColor: '#a2d6f8',
-          fill: false
-        }
-      ]
-    };
+  renderDealsProjectionChart() {
+    new Chart("dealsProjectionChart", {
+      type: 'line',
+      data: {
+        labels: ['Oct 2025', 'Nov 2025', 'Dec 2025', 'Jan 2026', 'Feb 2026', 'Mar 2026', 'Apr 2026', 'May 2026', 'Jun 2026', 'Jul 2026', 'Aug 2026', 'Sep 2026'],
+        datasets: [
+          {
+            label: 'Projected Value',
+            data: [2000, 4000, 3500, 3000, 3100, 3200, 2800, 2600, 3100, 2900, 2700, 2200],
+            borderColor: '#ffc107',
+            backgroundColor: 'rgba(255,193,7,0.2)',
+            tension: 0.4,
+            fill: true
+          },
+          {
+            label: 'Deals Due',
+            data: [100, 180, 150, 140, 130, 150, 160, 120, 140, 130, 120, 100],
+            borderColor: '#17a2b8',
+            backgroundColor: 'rgba(23,162,184,0.2)',
+            tension: 0.4,
+            fill: true
+          }
+        ]
+      }
+    });
   }
 
-  private getDealLossReasonsData(): any {
-    // This would be the data for the donut chart (Deal loss reasons)
-    return {
-      labels: ['Lack of urgency', 'Better offer', 'Price too high', 'Budget constraints', 'Feature limitations'],
-      datasets: [{
-        data: [13.41, 14.07, 18.49, 21.1, 32.93],
-        backgroundColor: ['#f8b4a2', '#a2d6f8', '#8f8fdf', '#1c4966', '#3b94d9']
-      }]
-    };
+  renderSalesPipelineChart() {
+    new Chart("salesPipelineChart", {
+      type: 'doughnut',
+      data: {
+        labels: ['Lead In', 'Contact Made', 'Interview', 'Proposal', 'Negotiation', 'Closed Lost'],
+        datasets: [{
+          data: [26.85, 18.46, 14.86, 9.84, 5.06, 21.32],
+          backgroundColor: ['#007bff', '#6610f2', '#6f42c1', '#e83e8c', '#fd7e14', '#dc3545']
+        }]
+      }
+    });
   }
 
-  private getDealsProjectionData(): any {
-    // This would be the data for the line chart (Deals projection)
-    return {
-      labels: ['Sep 2025', 'Nov 2025', 'Jan 2026', 'Mar 2026', 'May 2026', 'Jul 2026', 'Sep 2026'],
-      datasets: [
-        {
-          label: 'Projected value',
-          data: [3500, 2500, 4000, 3000, 3500, 2800, 3800],
-          borderColor: '#1e90ff',
-          fill: false
-        },
-        {
-          label: 'Deals due',
-          data: [150, 100, 180, 120, 160, 110, 170],
-          borderColor: '#a2d6f8',
-          fill: false
-        }
-      ]
-    };
-  }
-
+  renderDealLossChart() {
+    new Chart("dealLossChart", {
+      type: 'doughnut',
+      data: {
+        labels: ['Feature limitations', 'Budget constraints', 'Price too high', 'Better alternative', 'Lack of urgency'],
+        datasets: [{
+          data: [32.97, 21.1, 18.46, 14.07, 13.41],
+          backgroundColor: ['#dc3545', '#ffc107', '#fd7e14', '#6f42c1', '#20c997']
+        }]
+      }
+    });
+  } 
 }
