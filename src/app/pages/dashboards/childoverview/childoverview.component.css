@@ -1,151 +1,247 @@
-/* General container for the entire dashboard */
-.dashboard-container {
-  display: grid;
-  grid-template-columns: 3fr 1fr; /* Two columns: main content and sidebar */
-  gap: 20px;
+
+/* General layout */
+.dashboard {
   padding: 20px;
-  background-color: #f0f2f5; /* Light gray background */
   font-family: Arial, sans-serif;
-}
-
-/* -------------------- Top KPIs Section -------------------- */
-
-.kpi-section {
-  grid-column: 1 / 2; /* Span the first column */
+  background-color: #f5f8fc;
+  /* 1. Establish the main dashboard grid for two columns: content and filters */
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Four columns for the KPI cards */
-  gap: 15px;
+  grid-template-columns: 3fr 1fr; /* 3 parts for content, 1 part for filters */
+  gap: 20px;
+}
+ 
+/* New container for metrics and charts */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between metrics and charts */
+}
+ 
+/* KPI Metrics (Top boxes) */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Fixed four columns */
+  gap: 12px;
   margin-bottom: 20px;
 }
 
-.kpi-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 20px;
-  border-radius: 12px;
-  color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.kpi-card.purple {
-  background-color: #5d3fd3; /* Dark purple from the image */
-}
-
-.kpi-card.blue {
-  background-color: #1e90ff; /* A shade of blue from the image */
-}
-
-.kpi-label {
-  font-size: 14px;
-  opacity: 0.8;
-  margin-bottom: 5px;
-}
-
-.kpi-value {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-/* -------------------- Main Content Section (Charts) -------------------- */
-
-.main-content {
-  grid-column: 1 / 2; /* Main content takes the first column */
+ 
+/* Chart containers */
+.charts {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two columns for the charts */
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 24px;
+  /* Removed margin-bottom here */
 }
-
-.chart-container {
-  background-color: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.chart-section {
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+ 
+/* Filters (right-hand side or bottom) */
+.filters {
+  /* 2. Place filters in the second column */
+  grid-column: 2;
+  grid-row: 1 / span 2; /* Stretch across the main content and chart area */
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  /* Change filters layout to vertical for the sidebar */
   display: flex;
   flex-direction: column;
-  height: 400px; /* Adjust height as needed */
+  gap: 10px;
 }
-
-.chart-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.chart-title {
-  font-size: 18px;
+ 
+.filters label {
   font-weight: 600;
+  color: #555;
+  margin-top: 10px; /* Add spacing above labels */
+  margin-bottom: 4px;
+  display: block;
+}
+/* Ensure inputs take up the width of the filter container */
+.filters input,
+.filters select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+/* Style for the two date inputs to be side-by-side */
+.filters input[type="date"] {
+    flex-grow: 1; /* Allow them to grow */
+}
+.date-inputs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+ 
+ 
+/* Responsive tweaks */
+@media (max-width: 992px) { /* Adjust breakpoint for two-column layout */
+  .dashboard {
+    /* 3. Stack columns on smaller screens */
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .main-content {
+      grid-column: 1;
+      grid-row: 1;
+  }
+  .filters {
+    grid-column: 1;
+    grid-row: 2; /* Filters move to the bottom */
+    /* Restore original grid layout for filters when stacked */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  .filters label {
+      margin-top: 0; 
+  }
+  .charts {
+    grid-template-columns: 1fr;
+  }
+  .metrics {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+/* KPI Metrics (Top boxes) */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+  
+}
+
+.metric {
+  background: linear-gradient(145deg, hwb(222 35% 6%), lab(52.99% 39.34 -67.43));
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  color: #fdf9f9;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.metric:hover {
+  transform: translateY(-3px);
+}
+
+.metric span {
+  display: block;
+  margin-top: 6px;
+  font-size: 20px;
+  color: hsl(0, 50%, 98%);
+  font-weight: normal;
+}
+
+/* Chart containers */
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.chart-section {
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+.chart-section h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Canvas sizing */
+canvas {
+  width: 100% !important;
+  height: 300px !important;
+}
+
+/* Filters (right-hand side or bottom) */
+.filters {
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.filters label {
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.filters input,
+.filters select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Support Section */
+.support {
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.support p {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 12px;
   color: #333;
 }
 
-.chart-placeholder {
-  flex-grow: 1; /* Makes the placeholder take up available space */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f8f8f8;
-  border-radius: 8px;
-  color: #aaa;
+.support button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  margin: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
 }
 
-/* -------------------- Sidebar Section -------------------- */
-
-.sidebar {
-  grid-column: 2 / 3; /* Sidebar takes the second column */
-  background-color: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.support button:hover {
+  background-color: #0056b3;
 }
 
-.sidebar-card {
-  margin-bottom: 20px;
-}
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .charts {
+    grid-template-columns: 1fr;
+  }
 
-.card-title {
-  font-weight: 600;
-  margin-bottom: 10px;
-  display: block;
-}
+  .metrics {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
 
-.date-picker-placeholder, .dropdown-placeholder {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 10px;
-  background-color: #f9f9f9;
-}
-
-.help-section {
-  background-color: #f0f8ff;
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 30px;
-  text-align: center;
-  position: relative;
-  overflow: hidden; /* To contain the image */
-}
-
-.help-title {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.help-links a {
-  display: block;
-  color: #1e90ff;
-  text-decoration: none;
-  margin: 5px 0;
-}
-
-.help-image-placeholder {
-  height: 80px;
-  width: 80px;
-  border-radius: 50%;
-  background-color: #ddd;
-  margin: 15px auto 0;
-  border: 3px solid #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  .filters {
+    grid-template-columns: 1fr;
+  }
 }

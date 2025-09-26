@@ -1,106 +1,66 @@
-<div class="dashboard-container">
-  <div class="kpi-section">
-    <div class="kpi-card purple">
-      <span class="kpi-label">Total sales</span>
-      <span class="kpi-value">5.2M</span>
+<div class="dashboard">
+
+  <!-- Top Metrics -->
+  <div class="metrics">
+    <div class="metric">Total sales <span>{{ totalSales }}M</span></div>
+    <div class="metric">Win rate <span>{{ winRate }}%</span></div>
+    <div class="metric">Close rate <span>{{ closeRate }}%</span></div>
+    <div class="metric">Avg days to close <span>{{ avgDaysToClose }}</span></div>
+    <div class="metric">Pipeline value <span>{{ pipelineValue }}M</span></div>
+    <div class="metric">Open deals <span>{{ openDeals }}</span></div>
+    <div class="metric">Weighted value <span>{{ weightedValue }}M</span></div>
+    <div class="metric">Avg open deal age <span>{{ avgOpenDealAge }}</span></div>
+  </div>
+  
+
+  <!-- Chart Sections -->
+  <div class="charts">
+    <div class="chart-section">
+      <h3>Won deals (last 12 months)</h3>
+      <canvas id="wonDealsChart"></canvas>
     </div>
-    <div class="kpi-card blue">
-      <span class="kpi-label">Win rate</span>
-      <span class="kpi-value">16.92%</span>
+
+    <div class="chart-section">
+      <h3>Deals projection (future 12 months)</h3>
+      <canvas id="dealsProjectionChart"></canvas>
     </div>
-    <div class="kpi-card blue">
-      <span class="kpi-label">Close rate</span>
-      <span class="kpi-value">14.47%</span>
+
+    <div class="chart-section">
+      <h3>Sales pipeline</h3>
+      <canvas id="salesPipelineChart"></canvas>
     </div>
-    <div class="kpi-card blue">
-      <span class="kpi-label">Avg days to close</span>
-      <span class="kpi-value">60.70</span>
-    </div>
-    <div class="kpi-card blue">
-      <span class="kpi-label">Pipeline value</span>
-      <span class="kpi-value">77.8M</span>
-    </div>
-    <div class="kpi-card blue">
-      <span class="kpi-label">Open deals</span>
-      <span class="kpi-value">1.6K</span>
-    </div>
-    <div class="kpi-card blue">
-      <span class="kpi-label">Weighted value</span>
-      <span class="kpi-value">35.6M</span>
-    </div>
-    <div class="kpi-card blue">
-      <span class="kpi-label">Avg open deal age</span>
-      <span class="kpi-value">201.67</span>
+
+    <div class="chart-section">
+      <h3>Deal loss reasons</h3>
+      <canvas id="dealLossChart"></canvas>
     </div>
   </div>
 
-  <div class="main-content">
-    <div class="chart-container">
-      <div class="chart-header">
-        <span class="chart-title">Sales pipeline</span>
-        <div class="chart-legend">
-          </div>
-      </div>
-      <div class="chart-placeholder"></div>
-    </div>
+  <!-- Filters -->
+  <div class="filters">
+    <label>Report date</label>
+    <input type="date" />
+    <input type="date" />
 
-    <div class="chart-container">
-      <div class="chart-header">
-        <span class="chart-title">Won deals (last 12 months)</span>
-        <div class="chart-legend">
-          </div>
-      </div>
-      <div class="chart-placeholder"></div>
-    </div>
+    <label>Deal Owner</label>
+    <select><option>All</option></select>
 
-    <div class="chart-container">
-      <div class="chart-header">
-        <span class="chart-title">Deal loss reasons</span>
-        <div class="chart-legend">
-          </div>
-      </div>
-      <div class="chart-placeholder"></div>
-    </div>
+    <label>Deal Stage</label>
+    <select><option>All</option></select>
 
-    <div class="chart-container">
-      <div class="chart-header">
-        <span class="chart-title">Deals projection (future 12 months)</span>
-        <div class="chart-legend">
-          </div>
-      </div>
-      <div class="chart-placeholder"></div>
-    </div>
+    <label>Pipeline</label>
+    <select><option>All</option></select>
+
+    <label>Deal Label</label>
+    <select><option>All</option></select>
   </div>
 
-  <div class="sidebar">
-    <div class="sidebar-card">
-      <span class="card-title">Report date</span>
-      <div class="date-picker-placeholder"></div>
-    </div>
-    <div class="sidebar-card">
-      <span class="card-title">Deal Owner</span>
-      <div class="dropdown-placeholder"></div>
-    </div>
-    <div class="sidebar-card">
-      <span class="card-title">Deal Stage</span>
-      <div class="dropdown-placeholder"></div>
-    </div>
-    <div class="sidebar-card">
-      <span class="card-title">Pipeline</span>
-      <div class="dropdown-placeholder"></div>
-    </div>
-    <div class="sidebar-card">
-      <span class="card-title">Deal Label</span>
-      <div class="dropdown-placeholder"></div>
-    </div>
-    <div class="help-section">
-      <span class="help-title">Have questions?</span>
-      <div class="help-links">
-        <a href="#">Dashboard setup guide</a>
-        <a href="#">Book a demo</a>
-        <a href="#">Contact support</a>
-      </div>
-      <div class="help-image-placeholder"></div>
-    </div>
-  </div>
+  <!-- Support Section -->
+  <!-- <div class="support">
+    <p>Have questions?</p>
+    <button>Dashboard setup guide</button>
+    <button>Book a demo</button>
+    <button>Contact support</button>
+  </div> -->
+
 </div>
