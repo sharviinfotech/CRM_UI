@@ -262,7 +262,7 @@
   background-color: #383e44;
   color: #b0b5b8;
   border: none;
-  height: 38px; /* fixed height */
+  height: 40px; /* fixed height */
   gap:5px;
   line-height: 50%; /* vertical center */
   padding: 0 20px; /* horizontal padding */
@@ -318,7 +318,7 @@
   background-color: #383e44;
   color: #b0b5b8;
   border: none;
-  height: 38px;                  /* fixed height */
+  height: 40px;                  /* fixed height */
   padding: 0 20px;               /* horizontal padding */
   position: relative;
   cursor: pointer;
@@ -340,8 +340,8 @@
   left: -25px;                     /* adjust overlap */
   width: 0;
   height: 0;
-  border-top: 19px solid transparent; 
-  border-bottom: 19px solid transparent;
+  border-top: 20px solid transparent; 
+  border-bottom: 20px solid transparent;
   border-right: 25px solid #383e44; 
   z-index: 0;
 }
