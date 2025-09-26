@@ -575,3 +575,58 @@
   animation-duration: 2.8s; /* slightly faster on hover */
   opacity: 1;
 }
+
+
+/*sunil anna code*/
+/* Styling for the overall card container */
+.card-LE {
+    border-radius: 16px !important; /* Slightly more rounded corners for modern look */
+    background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white background */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important; /* Stronger shadow for depth */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle white border */
+}
+ 
+/* Header styling, keeping original colors but adjusting for glassmorphism background */
+.card-header-LE {
+    font-size: 20px !important;
+    font-weight: bold !important;
+    padding: 15px 20px; /* Adjusted padding */
+    border-bottom: 2px solid green; /* Keep the green border */
+    color: brown;
+    background: transparent; /* Make header background transparent to show backdrop-filter */
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif !important;
+}
+   
+/* Card body styling - already had good glassmorphism properties, just harmonizing */
+.card-body-LE {
+    padding: 10px !important; /* Adjusted padding */
+    background: transparent; /* Make body background transparent to show backdrop-filter */
+}
+.btn-glass-save {
+    /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.15) !important; /* Semi-transparent background */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* For Safari support */
+   border: 1px solid rgb(183 163 163 / 51%) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+ 
+    /* Typography and Size (reusing from your original .btnSave) */
+    padding: 10px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #bf1e1e !important;
+    font-weight: bold; /* Make it stand out */
+    transition: all 0.3s ease; /* Smooth transition for hover */
+}
+ 
+.btn-glass-save:hover {
+    /* Change on hover for feedback */
+    background-color: white !important;
+    color: #057e1b !important; /* Change text color to the original save color */
+    border: 1px solid #057e1b !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
+}
+ 
