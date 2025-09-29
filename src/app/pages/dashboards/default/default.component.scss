@@ -1,13 +1,262 @@
-/* Root */
-// .dashboard-body {
-//   // background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-//   min-height: 100vh;
-//   padding: 20px;
-//   color: #ecf0f1;
-//   font-family: "Segoe UI", Roboto, sans-serif;
-//     // background: url("/assets/images/Dashboard_bg.jpg") no-repeat center center / cover !important;
+// Apply styles to your main containers
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; // Occupy full viewport height
+}
 
-// }
+.dashboard-content {
+  flex-grow: 1; // Take up remaining space
+  border: 2px solid black; // The main black border
+  border-radius: 8px; // Optional: for a softer look
+  margin: 15px; // A little space from the edges
+}
+
+.content-wrapper {
+  // The red border for the dynamic content
+  border: 1px solid red;
+  border-radius: 8px;
+}
+
+.side-panel {
+  // Styles for your side panel if needed
+}
+
+/* Black border for content */
+.bordered-content {
+  border: 2px solid black;
+  border-radius: 6px;
+  background: #fff;
+}
+
+/* Tabs Styling */
+.custom-tabs .nav-link {
+  color: white;
+  border: none;
+  background: transparent;
+}
+
+.custom-tabs .nav-link.active {
+  font-weight: bold;
+  border-bottom: 3px solid #fff;
+}
+.crm-overview-content {
+  padding: 10px;
+  background-color: white;
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  font-family: Inter, Roboto, sans-serif;
+}
+
+/* --- 1. KPI Metrics: 4 items per row (Total 8, creating 2 rows) --- */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.metric {
+  background: linear-gradient(145deg, #4a69bd, #3b5998);
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  color: #fdf9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80px;
+}
+
+.metric:hover {
+  transform: translateY(-3px);
+}
+
+.metric span {
+  display: block;
+  margin-top: 6px;
+  font-size: 24px;
+  color: hsl(0, 50%, 98%);
+  font-weight: 600;
+}
+
+/* --- 2. Chart Containers: 2 items per row (Total 4, creating 2 rows) --- */
+.charts {
+  display: grid;
+  /* Desktop/Wide Screens: 2 equal columns guaranteed */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.chart-section {
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.chart-section h3 {
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+  border-bottom: 2px solid #1e3c72;
+}
+
+
+/* --- 3. Chart Containers: 2 items per row (Total 4, creating 2 rows) --- */
+.charts3 {
+  display: grid;
+  /* Desktop/Wide Screens: 2 equal columns guaranteed */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.chart-section3 {
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.chart-section3 h3 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+/* --- 3. Responsive Adjustments (to prevent horizontal scroll on smaller screens) --- */
+
+/* Medium Screens (e.g., small laptops, large tablets) */
+@media (max-width: 1400px) {
+  .metrics {
+    /* Reduce to 3 columns to save space */
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Tablet Screens */
+@media (max-width: 900px) {
+  .metrics {
+    /* Reduce to 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile Screens (Charts and Metrics stack) */
+@media (max-width: 600px) {
+
+  .metrics,
+  .charts {
+    /* Stack everything vertically (1 column) */
+    grid-template-columns: 1fr;
+  }
+}
+
+.crm-overview-content {
+  display: flex;
+  gap: 20px;
+  background-color: white;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Left panel takes more space */
+.left-panel {
+  flex: 3;
+  /* ~70% */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Right panel smaller */
+.right-panel {
+  flex: 1.2;
+  /* ~30% */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Metrics grid */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+/* Chart grid */
+.charts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.chart-section {
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsiveness */
+@media (max-width: 1200px) {
+  .crm-overview-content {
+    flex-direction: column;
+  }
+
+  .left-panel,
+  .right-panel {
+    flex: 1 1 100%;
+  }
+
+  .metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+  }
+}
+
+#salesPipelineChart,
+#dealLossChart {
+  height: 180px !important;
+  width: 100% !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -138,4 +387,16 @@
   .wide-card {
     grid-column: span 12; /* stack vertically */
   }
+}
+.filter-card {
+    padding: 1rem;
+}
+.form-label {
+    font-weight: 600;
+    color: #333;
+}
+.navtabsStyle{
+
+    background: #1e3c72;
+    border-radius: 0px 0px 0px 23px;
 }

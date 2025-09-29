@@ -1,13 +1,15 @@
 
 
 .navbar-header {
-   background: linear-gradient(
-    135deg,
-    #1e3c72 0%,
-    #2a5298 100%
-  ) center center / cover !important;
-  font-family: "Times New Roman", Times, serif !important;
-letter-spacing: 0.1px;
+  //  background: linear-gradient(
+  //   135deg,
+  //   #1e3c72 0%,
+  //   #2a5298 100%
+  // ) center center / cover !important;
+  background-color: #1e3c72;
+  font-weight: 500;
+                font-family: Inter, Roboto, sans-serif;
+                letter-spacing: 0.1px;
   // background-image: linear-gradient(to right, #6ba3cd, #031c2e) !important;
     //  background: url("/assets/images/bg5.jpg") no-repeat center center / cover !important;
 
@@ -43,18 +45,25 @@ letter-spacing: 0.1px;
 .brand-text {
   flex: 1;
   text-align: center;
-  font-size: 20px;
-  font-weight: 900;
+  font-size: 25px;
+  /* Bigger for impact */
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 3px;
 
-  background:white;/* red-pink gradient */
+  /* Gradient text effect */
+  background-color: white;
+  background-size: 300%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
- 
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+
+  /* Smooth animation */
+  animation: gradientFlow 6s infinite linear;
   letter-spacing: 0.3px;
+  font-family: Inter, Roboto, sans-serif;
+  position: fixed;
+  right: 40%;
+  top: 10px;
 }
 
  

@@ -21,13 +21,13 @@ export const MENU: MenuItem[] = [
                 parentId: 2,
                 icon: 'bx-user-plus',
             },
-             {
-                id:2,
-                label: 'Overview',
-                link: '/childoverview',
-                parentId: 2,
-                icon: 'bx-user-plus',
-            },
+            //  {
+            //     id:2,
+            //     label: 'Overview',
+            //     link: '/childoverview',
+            //     parentId: 2,
+            //     icon: 'bx-user-plus',
+            // },
              {
                 id:2,
                 label: 'Agents',
@@ -35,13 +35,13 @@ export const MENU: MenuItem[] = [
                 parentId: 2,
                 icon: 'bx-user-plus',
             },
-               {
-                id:2,
-                label: 'Deals',
-                link: '/childdeals',
-                parentId: 2,
-                icon: 'bx-user-plus',
-             },
+            //    {
+            //     id:2,
+            //     label: 'Deals',
+            //     link: '/childdeals',
+            //     parentId: 2,
+            //     icon: 'bx-user-plus',
+            //  },
 
 
             //  {

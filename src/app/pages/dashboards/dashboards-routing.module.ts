@@ -34,19 +34,31 @@ import { ChilddealsComponent } from './childdeals/childdeals.component';
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 const routes: Routes = [
-    {
+//   {
+//         path: '', 
+//         component: DefaultComponent,
+//         children: [
+//             {
+//                 path: '',
+//                 redirectTo: 'childoverview',
+//                 pathMatch: 'full'
+//             },
+//             {
+//                 path: 'childoverview',
+//                 component: ChildoverviewComponent
+//             },
+//             {
+//                 path: 'childagents',
+//                 component: ChildagentsComponent
+//             },
+//             {
+//                 path: 'childdeals',
+//                 component: ChilddealsComponent
+//             },
+//         ]
+//     },
+   {
         path: 'default',
         component: DefaultComponent
     },
@@ -118,18 +130,18 @@ const routes: Routes = [
         path: 'create_crm',
         component: CreateCrmComponent
     },
-    {
-        path: 'childoverview',
-        component: ChildoverviewComponent
-    },
+    // {
+    //     path: 'childoverview',
+    //     component: ChildoverviewComponent
+    // },
     {
         path: 'childagents',
         component: ChildagentsComponent
     },
-      {
-        path: 'childdeals',
-        component: ChilddealsComponent
-    },
+    //   {
+    //     path: 'childdeals',
+    //     component: ChilddealsComponent
+    // },
      
    
    

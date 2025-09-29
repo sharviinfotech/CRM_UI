@@ -487,6 +487,9 @@ verifyedInvoice(invoice){
 //     this.modalRef.close();
 //   });
 // }
-  
+  goToProfile(): void {
+  // Add logic to close dropdown here if necessary
+  this.router.navigate(['/contacts/profile']);
+}
   
 }

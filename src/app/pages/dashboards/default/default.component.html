@@ -1,73 +1,463 @@
-<div class="dashboard-body">
- 
-  <div class="card-header text-center">
-      CRM Dashboard
+<div class="dashboard-wrapper">
+
+  <div class="header-container text-white"> 
+    <div class="row">
+        <div class="col-md-8 col-sm-8 col-lg-8" style="background: #1e3c723b;">
+        <span class="fs-4 fw-bold">CRM Dashboard</span>
+      </div>
+     <div class="col-md-4 col-sm-4 col-lg-4 navtabsStyle">
+       <ul class="nav nav-tabs custom-tabs">
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{active: activeTab==='childoverview'}"
+            (click)="childcomponentNavigate('childoverview')" >Overview</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{active: activeTab==='childagents'}"
+            (click)="childcomponentNavigate('childagents')" >Agents</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{active: activeTab==='childdeals'}"
+            (click)="childcomponentNavigate('childdeals')" >Deals</a>
+        </li>
+      </ul>
+     </div>
+    </div>
+  
   </div>
 
-  <div class="card-body">
-    
-    <section class="grid">
-
-      
-      <article class="card small-card">
-        <div class="card-title">Production Today</div>
-        <div class="kpi big">{{ productionToday }}</div>
-      </article>
-
-     
-      <article class="card small-card">
-        <div class="card-title">OEE</div>
-        <div class="kpi big">{{ oee }}%</div>
-      </article>
-
-      
-      <article class="card status-card">
-        <div class="card-title">Machine Status</div>
-        <div class="status-row">
-          <div><span class="dot green"></span> Running</div>
-          <div class="status-val">{{ machineStatus.running }}</div>
+  <div class="dashboard-content p-3">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-12 side-panel p-3">
+        <div class="filter-card">
+          <label class="form-label">Report date</label>
+          <div class="d-flex align-items-center mb-3">
+            <input type="date" class="form-control me-2" value="2024-04-01">
+            <input type="date" class="form-control" value="2024-07-01">
+          </div>
+          <label class="form-label">Deal Owner</label>
+          <select class="form-select mb-3">
+            <option>All</option>
+          </select>
+          <label class="form-label">Deal Stage</label>
+          <select class="form-select mb-3">
+            <option>All</option>
+          </select>
+          <label class="form-label">Pipeline</label>
+          <select class="form-select mb-3">
+            <option>All</option>
+          </select>
+          <label class="form-label">Deal Label</label>
+          <select class="form-select">
+            <option>All</option>
+          </select>
         </div>
-        <div class="status-row">
-          <div><span class="dot yellow"></span> Idle</div>
-          <div class="status-val">{{ machineStatus.idle }}</div>
+      </div>
+      <div class="col-lg-9 content-wrapper p-3 bordered-content">
+        <!-- <router-outlet></router-outlet> -->
+        <div class="crm-overview-content" *ngIf="OverviewCard">
+          <!-- Left Panel -->
+          <div class="left-panel">
+            <div class="metrics">
+              <div class="metric">Total sales <span>$12.5M</span></div>
+              <div class="metric">Win rate <span>28%</span></div>
+              <div class="metric">Close rate <span>15%</span></div>
+              <div class="metric">Avg days to close <span>45</span></div>
+              <div class="metric">Pipeline value <span>$50.2M</span></div>
+              <div class="metric">Open deals <span>120</span></div>
+              <div class="metric">Weighted value <span>$35.1M</span></div>
+              <div class="metric">Avg open deal age <span>22</span></div>
+            </div>
+
+            <div class="charts">
+              <div class="chart-section">
+                <h3>Won deals (last 12 months)</h3>
+                <canvas id="wonDealsChart"></canvas>
+              </div>
+              <div class="chart-section">
+                <h3>Deals projection (future 12 months)</h3>
+                <canvas id="dealsProjectionChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Panel -->
+          <div class="right-panel">
+            <div class="chart-section">
+              <h3>Sales pipeline</h3>
+              <canvas id="salesPipelineChart"></canvas>
+            </div>
+
+            <div class="chart-section">
+              <h3>Deal loss reasons</h3>
+              <canvas id="dealLossChart"></canvas>
+            </div>
+          </div>
         </div>
-        <div class="status-row">
-          <div><span class="dot red"></span> Faulty</div>
-          <div class="status-val">{{ machineStatus.faulty }}</div>
+        <div class="dashboard-container-agent" *ngIf="agentcard">
+
+         
+
+            <div class="tableFixHead table-responsive">
+              <table class="table  table-bordered table-bordered">
+                <thead>
+                  <tr>
+                    <th class="owner-col">Owner</th>
+                    <th class="closed-amount-col">Closed amount</th>
+                    <th>Deals</th>
+                    <th>Open deals</th>
+                    <th>Lost deals</th>
+                    <th>Won deals</th>
+                    <th>Win rate</th>
+                    <th>Close rate</th>
+                    <th class="days-to-close-col">Avg days to close</th>
+                    <th>Avg open deal age</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="owner-col">Mia Davis</td>
+                    <td class="closed-amount-col">974.7K</td>
+                    <td>148</td>
+                    <td>115</td>
+                    <td>30</td>
+                    <td>3</td>
+                    <td>10.00%</td>
+                    <td>9.09%</td>
+                    <td class="red">63.45</td>
+                    <td class="blue">206.85</td>
+                  </tr>
+                  <tr>
+                    <td class="owner-col">Zara Khan</td>
+                    <td class="closed-amount-col">615.3K</td>
+                    <td>156</td>
+                    <td>113</td>
+                    <td>33</td>
+                    <td>10</td>
+                    <td>30.30%</td>
+                    <td>23.26%</td>
+                    <td>62.14</td>
+                    <td>193.42</td>
+                  </tr>
+                  <tr>
+                    <td class="owner-col">Sebastian Müller</td>
+                    <td class="closed-amount-col">495.8K</td>
+                    <td>128</td>
+                    <td>93</td>
+                    <td>30</td>
+                    <td>5</td>
+                    <td>16.67%</td>
+                    <td>14.29%</td>
+                    <td>59.96</td>
+                    <td>199.49</td>
+                  </tr>
+                  <tr>
+                    <td class="owner-col">Emily Johnson</td>
+                    <td class="closed-amount-col">469.1K</td>
+                    <td>117</td>
+                    <td>92</td>
+                    <td>22</td>
+                    <td>3</td>
+                    <td>13.64%</td>
+                    <td>12.00%</td>
+                    <td>60.96</td>
+                    <td>203.55</td>
+                  </tr>
+                  <tr>
+                    <td class="owner-col">Emma Chen</td>
+                    <td class="closed-amount-col">438.4K</td>
+                    <td>121</td>
+                    <td>91</td>
+                    <td>26</td>
+                    <td>4</td>
+                    <td>15.38%</td>
+                    <td>13.33%</td>
+                    <td>61.40</td>
+                    <td>199.79</td>
+                  </tr>
+                  <tr>
+                    <td class="owner-col">Isabella Rossi</td>
+                    <td class="closed-amount-col">330.3K</td>
+                    <td>130</td>
+                    <td>100</td>
+                    <td>24</td>
+                    <td>6</td>
+                    <td>25.00%</td>
+                    <td>20.00%</td>
+                    <td class="red">68.00</td>
+                    <td>204.14</td>
+                  </tr>
+                  <tr>
+                    <td class="owner-col">Oliver Kim</td>
+                    <td class="closed-amount-col">321.1K</td>
+                    <td>142</td>
+                    <td>108</td>
+                    <td>28</td>
+                    <td>6</td>
+                    <td>21.43%</td>
+                    <td>17.65%</td>
+                    <td>57.00</td>
+                    <td class="blue">217.11</td>
+                  </tr>
+                  <tr>
+                    <td class="owner-col">Daniel Garcia</td>
+                    <td class="closed-amount-col">276.0K</td>
+                    <td>126</td>
+                    <td>83</td>
+                    <td>36</td>
+                    <td>7</td>
+                    <td>19.44%</td>
+                    <td>16.28%</td>
+                    <td>58.67</td>
+                    <td>195.31</td>
+                  </tr>
+                  <tr>
+                    <td class="owner-col">Amelia Wilson</td>
+                    <td class="closed-amount-col">233.8K</td>
+                    <td>141</td>
+                    <td>99</td>
+                    <td>35</td>
+                    <td>7</td>
+                    <td>20.00%</td>
+                    <td>16.67%</td>
+                    <td>60.36</td>
+                    <td>197.62</td>
+                  </tr>
+                  <tr>
+                    <td class="owner-col">Ahmed Hassan</td>
+                    <td class="closed-amount-col">217.8K</td>
+                    <td>111</td>
+                    <td>87</td>
+                    <td>19</td>
+                    <td>5</td>
+                    <td>26.32%</td>
+                    <td>20.83%</td>
+                    <td>60.04</td>
+                    <td>195.67</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="pipeline-chart-container">
+              <div class="chart-header">
+                <div class="chart-title">Sales pipeline by agent</div>
+                <div class="legend">
+                  <span class="legend-item blue-dark"><span class="legend-box"></span>Closed Lost</span>
+                  <span class="legend-item blue-light"><span class="legend-box"></span>Closed Won</span>
+                  <span class="legend-item red-dark"><span class="legend-box"></span>Contact Made</span>
+                  <span class="legend-item red-light"><span class="legend-box"></span>Interview</span>
+                  <span class="legend-item green-dark"><span class="legend-box"></span>Lead In</span>
+                  <span class="legend-item green-light"><span class="legend-box"></span>Negotiation</span>
+                  <span class="legend-item cyan-light"><span class="legend-box"></span>Proposal</span>
+                </div>
+              </div>
+
+              <div class="chart-area">
+                <div class="y-axis">
+                  <span>Zara Khan</span>
+                  <span>Lily Nguyen</span>
+                  <span>Mia Davis</span>
+                  <span>Mohammed Ali</span>
+                  <span>Oliver Kim</span>
+                  <span>Amelia Wilson</span>
+                  <span>John Smith</span>
+                  <span>Antonio Costa</span>
+                  <span>Isabella Rossi</span>
+                  <span>Sebastian Müller</span>
+                  <span>Sophia Liu</span>
+                  <span>Daniel Garcia</span>
+                </div>
+                <div class="bar-area">
+                  <div class="bar-row" style="width: 95%;">
+                    <div class="bar-segment blue-dark" style="width: 25%;"></div>
+                    <div class="bar-segment blue-light" style="width: 15%;"></div>
+                    <div class="bar-segment red-dark" style="width: 10%;"></div>
+                    <div class="bar-segment red-light" style="width: 15%;"></div>
+                    <div class="bar-segment green-dark" style="width: 10%;"></div>
+                    <div class="bar-segment green-light" style="width: 15%;"></div>
+                    <div class="bar-segment cyan-light" style="width: 10%;"></div>
+                  </div>
+                  <div class="bar-row" style="width: 90%;">
+                    <div class="bar-segment blue-dark" style="width: 30%;"></div>
+                    <div class="bar-segment blue-light" style="width: 10%;"></div>
+                    <div class="bar-segment red-dark" style="width: 15%;"></div>
+                    <div class="bar-segment red-light" style="width: 10%;"></div>
+                    <div class="bar-segment green-dark" style="width: 15%;"></div>
+                    <div class="bar-segment green-light" style="width: 10%;"></div>
+                    <div class="bar-segment cyan-light" style="width: 10%;"></div>
+                  </div>
+                  <div class="bar-row" style="width: 85%;">
+                    <div class="bar-segment blue-dark" style="width: 35%;"></div>
+                    <div class="bar-segment blue-light" style="width: 5%;"></div>
+                    <div class="bar-segment red-dark" style="width: 15%;"></div>
+                    <div class="bar-segment red-light" style="width: 15%;"></div>
+                    <div class="bar-segment green-dark" style="width: 10%;"></div>
+                    <div class="bar-segment green-light" style="width: 10%;"></div>
+                    <div class="bar-segment cyan-light" style="width: 10%;"></div>
+                  </div>
+                  <div class="bar-row" style="width: 80%;">
+                    <div class="bar-segment blue-dark" style="width: 20%;"></div>
+                    <div class="bar-segment blue-light" style="width: 10%;"></div>
+                    <div class="bar-segment red-dark" style="width: 25%;"></div>
+                    <div class="bar-segment red-light" style="width: 10%;"></div>
+                    <div class="bar-segment green-dark" style="width: 5%;"></div>
+                    <div class="bar-segment green-light" style="width: 20%;"></div>
+                    <div class="bar-segment cyan-light" style="width: 10%;"></div>
+                  </div>
+                  <div class="bar-row" style="width: 75%;">
+                    <div class="bar-segment blue-dark" style="width: 25%;"></div>
+                    <div class="bar-segment blue-light" style="width: 15%;"></div>
+                    <div class="bar-segment red-dark" style="width: 10%;"></div>
+                    <div class="bar-segment red-light" style="width: 15%;"></div>
+                    <div class="bar-segment green-dark" style="width: 10%;"></div>
+                    <div class="bar-segment green-light" style="width: 15%;"></div>
+                    <div class="bar-segment cyan-light" style="width: 10%;"></div>
+                  </div>
+                  <div class="bar-row" style="width: 70%;">
+                    <div class="bar-segment blue-dark" style="width: 30%;"></div>
+                    <div class="bar-segment blue-light" style="width: 10%;"></div>
+                    <div class="bar-segment red-dark" style="width: 15%;"></div>
+                    <div class="bar-segment red-light" style="width: 10%;"></div>
+                    <div class="bar-segment green-dark" style="width: 15%;"></div>
+                    <div class="bar-segment green-light" style="width: 10%;"></div>
+                    <div class="bar-segment cyan-light" style="width: 10%;"></div>
+                  </div>
+                  <div class="bar-row" style="width: 65%;">
+                    <div class="bar-segment blue-dark" style="width: 35%;"></div>
+                    <div class="bar-segment blue-light" style="width: 5%;"></div>
+                    <div class="bar-segment red-dark" style="width: 15%;"></div>
+                    <div class="bar-segment red-light" style="width: 15%;"></div>
+                    <div class="bar-segment green-dark" style="width: 10%;"></div>
+                    <div class="bar-segment green-light" style="width: 10%;"></div>
+                    <div class="bar-segment cyan-light" style="width: 10%;"></div>
+                  </div>
+                  <div class="bar-row" style="width: 60%;">
+                    <div class="bar-segment blue-dark" style="width: 20%;"></div>
+                    <div class="bar-segment blue-light" style="width: 10%;"></div>
+                    <div class="bar-segment red-dark" style="width: 25%;"></div>
+                    <div class="bar-segment red-light" style="width: 10%;"></div>
+                    <div class="bar-segment green-dark" style="width: 5%;"></div>
+                    <div class="bar-segment green-light" style="width: 20%;"></div>
+                    <div class="bar-segment cyan-light" style="width: 10%;"></div>
+                  </div>
+                  <div class="bar-row" style="width: 55%;">
+                    <div class="bar-segment blue-dark" style="width: 25%;"></div>
+                    <div class="bar-segment blue-light" style="width: 15%;"></div>
+                    <div class="bar-segment red-dark" style="width: 10%;"></div>
+                    <div class="bar-segment red-light" style="width: 15%;"></div>
+                    <div class="bar-segment green-dark" style="width: 10%;"></div>
+                    <div class="bar-segment green-light" style="width: 15%;"></div>
+                    <div class="bar-segment cyan-light" style="width: 10%;"></div>
+                  </div>
+                  <div class="bar-row" style="width: 50%;">
+                    <div class="bar-segment blue-dark" style="width: 30%;"></div>
+                    <div class="bar-segment blue-light" style="width: 10%;"></div>
+                    <div class="bar-segment red-dark" style="width: 15%;"></div>
+                    <div class="bar-segment red-light" style="width: 10%;"></div>
+                    <div class="bar-segment green-dark" style="width: 15%;"></div>
+                    <div class="bar-segment green-light" style="width: 10%;"></div>
+                    <div class="bar-segment cyan-light" style="width: 10%;"></div>
+                  </div>
+                  <div class="bar-row" style="width: 45%;">
+                    <div class="bar-segment blue-dark" style="width: 35%;"></div>
+                    <div class="bar-segment blue-light" style="width: 5%;"></div>
+                    <div class="bar-segment red-dark" style="width: 15%;"></div>
+                    <div class="bar-segment red-light" style="width: 15%;"></div>
+                    <div class="bar-segment green-dark" style="width: 10%;"></div>
+                    <div class="bar-segment green-light" style="width: 10%;"></div>
+                    <div class="bar-segment cyan-light" style="width: 10%;"></div>
+                  </div>
+                  <div class="bar-row" style="width: 40%;">
+                    <div class="bar-segment blue-dark" style="width: 20%;"></div>
+                    <div class="bar-segment blue-light" style="width: 10%;"></div>
+                    <div class="bar-segment red-dark" style="width: 25%;"></div>
+                    <div class="bar-segment red-light" style="width: 10%;"></div>
+                    <div class="bar-segment green-dark" style="width: 5%;"></div>
+                    <div class="bar-segment green-light" style="width: 20%;"></div>
+                    <div class="bar-segment cyan-light" style="width: 10%;"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="x-axis">
+                <span>0</span>
+                <span>50</span>
+                <span>100</span>
+                <span>150</span>
+              </div>
+            </div>
+        
         </div>
-      </article>
-
-      
-      <article class="card alerts-small">
-        <div class="card-title">Real-time Alerts</div>
-        <ul>
-          <li *ngFor="let a of alerts">{{ a }}</li>
-        </ul>
-      </article>
-
-      
-      <article class="card chart-card big">
-        <div class="card-title">Energy Consumption</div>
-        <canvas baseChart [data]="energyData" [options]="energyOptions" chartType="line">
-        </canvas>
-      </article>
-
-      
-      <article class="card chart-card big">
-        <div class="card-title">Downtime Summary</div>
-        <canvas baseChart [data]="downtimeData" [options]="downtimeOptions" chartType="bar">
-        </canvas>
-      </article>
-
-      
-      <article class="card wide-card">
-        <div class="card-title">Real-time Alerts</div>
-        <ul>
-          <li *ngFor="let a of alerts">{{ a }}</li>
-        </ul>
-      </article>
-
-    </section>
-
+        <div class="dashboard-container" *ngIf="dealscard">
+          <div class="deals-table-container">
+            <table class="deals-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Owner</th>
+                  <th>Stage</th>
+                  <th>Status</th>
+                  <th>Label</th>
+                  <th>Value</th>
+                  <th>Probability</th>
+                  <th>Products count</th>
+                  <th class="rotten-days-header">Rotten days</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>4999</td>
+                  <td>reddit deal</td>
+                  <td>Mia Davis</td>
+                  <td>Closed Won</td>
+                  <td class="status-won">won</td>
+                  <td>New Business</td>
+                  <td>956.0K</td>
+                  <td>100.00%</td>
+                  <td>2</td>
+                  <td class="rotten-days">44</td>
+                </tr>
+                <tr>
+                  <td>4817</td>
+                  <td>Coupler.io deal</td>
+                  <td>Hiroshi Tanaka</td>
+                  <td>Lead In</td>
+                  <td class="status-open">open</td>
+                  <td>Partnership</td>
+                  <td>368.5K</td>
+                  <td>50.00%</td>
+                  <td>6</td>
+                  <td class="rotten-days">23</td>
+                </tr>
+                <tr>
+                  <td>4274</td>
+                  <td>Dell deal</td>
+                  <td>John Smith</td>
+                  <td>Interview</td>
+                  <td class="status-open">open</td>
+                  <td>Upsell</td>
+                  <td>368.0K</td>
+                  <td>30.00%</td>
+                  <td>7</td>
+                  <td class="rotten-days">32</td>
+                </tr>
+                <tr>
+                  <td>2434</td>
+                  <td>google deal</td>
+                  <td>John Smith</td>
+                  <td>Negotiation</td>
+                  <td class="status-open">open</td>
+                  <td>Remarketing</td>
+                  <td>316.5K</td>
+                  <td>40.00%</td>
+                  <td>2</td>
+                  <td class="rotten-days">43</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

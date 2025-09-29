@@ -1,134 +1,33 @@
-
-/* General layout */
-.dashboard {
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  background-color: #f5f8fc;
-  /* 1. Establish the main dashboard grid for two columns: content and filters */
-  display: grid;
-  grid-template-columns: 3fr 1fr; /* 3 parts for content, 1 part for filters */
-  gap: 20px;
-}
- 
-/* New container for metrics and charts */
-.main-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Space between metrics and charts */
-}
- 
-/* KPI Metrics (Top boxes) */
-.metrics {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Fixed four columns */
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
- 
-/* Chart containers */
-.charts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-  gap: 24px;
-  /* Removed margin-bottom here */
-}
-.chart-section {
-  background: #fff;
-  padding: 16px;
-  border-radius: 10px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
-}
- 
-/* Filters (right-hand side or bottom) */
-.filters {
-  /* 2. Place filters in the second column */
-  grid-column: 2;
-  grid-row: 1 / span 2; /* Stretch across the main content and chart area */
-  background: #fff;
-  padding: 16px;
-  border-radius: 10px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
-  /* Change filters layout to vertical for the sidebar */
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
- 
-.filters label {
-  font-weight: 600;
-  color: #555;
-  margin-top: 10px; /* Add spacing above labels */
-  margin-bottom: 4px;
-  display: block;
-}
-/* Ensure inputs take up the width of the filter container */
-.filters input,
-.filters select {
+.crm-overview-content {
+  padding: 10px;
+  background-color: white;
+  min-height: 100%;
   width: 100%;
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-/* Style for the two date inputs to be side-by-side */
-.filters input[type="date"] {
-    flex-grow: 1; /* Allow them to grow */
-}
-.date-inputs {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 10px;
-}
- 
- 
-/* Responsive tweaks */
-@media (max-width: 992px) { /* Adjust breakpoint for two-column layout */
-  .dashboard {
-    /* 3. Stack columns on smaller screens */
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .main-content {
-      grid-column: 1;
-      grid-row: 1;
-  }
-  .filters {
-    grid-column: 1;
-    grid-row: 2; /* Filters move to the bottom */
-    /* Restore original grid layout for filters when stacked */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  }
-  .filters label {
-      margin-top: 0; 
-  }
-  .charts {
-    grid-template-columns: 1fr;
-  }
-  .metrics {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  }
+  display: flex;
+  font-family: Inter, Roboto, sans-serif;
 }
 
-/* KPI Metrics (Top boxes) */
+/* --- 1. KPI Metrics: 4 items per row (Total 8, creating 2 rows) --- */
 .metrics {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
-  margin-bottom: 20px;
-  
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
 }
 
 .metric {
-  background: linear-gradient(145deg, hwb(222 35% 6%), lab(52.99% 39.34 -67.43));
+  background: linear-gradient(145deg, #4a69bd, #3b5998);
   padding: 16px;
   border-radius: 8px;
   text-align: center;
   font-weight: bold;
   color: #fdf9f9;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80px;
 }
 
 .metric:hover {
@@ -138,15 +37,16 @@
 .metric span {
   display: block;
   margin-top: 6px;
-  font-size: 20px;
+  font-size: 24px;
   color: hsl(0, 50%, 98%);
-  font-weight: normal;
+  font-weight: 600;
 }
 
-/* Chart containers */
+/* --- 2. Chart Containers: 2 items per row (Total 4, creating 2 rows) --- */
 .charts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  /* Desktop/Wide Screens: 2 equal columns guaranteed */
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   margin-bottom: 30px;
 }
@@ -155,93 +55,140 @@
   background: #fff;
   padding: 16px;
   border-radius: 10px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
 }
 
 .chart-section h3 {
-  margin-bottom: 10px;
   font-size: 16px;
   color: #333;
   font-weight: 600;
+  border-bottom: 2px solid #1e3c72;
 }
 
-/* Canvas sizing */
-canvas {
-  width: 100% !important;
-  height: 300px !important;
-}
 
-/* Filters (right-hand side or bottom) */
-.filters {
-  background: #fff;
-  padding: 16px;
-  border-radius: 10px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
+/* --- 3. Chart Containers: 2 items per row (Total 4, creating 2 rows) --- */
+.charts3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
+  /* Desktop/Wide Screens: 2 equal columns guaranteed */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 30px;
 }
 
-.filters label {
-  font-weight: 600;
-  color: #555;
-  margin-bottom: 4px;
-  display: block;
-}
-
-.filters input,
-.filters select {
-  width: 100%;
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-/* Support Section */
-.support {
+.chart-section3 {
   background: #fff;
   padding: 16px;
   border-radius: 10px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
-  text-align: center;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
 }
 
-.support p {
+.chart-section3 h3 {
+  margin-bottom: 15px;
   font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 12px;
   color: #333;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
 }
 
-.support button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  margin: 6px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.2s ease;
+/* --- 3. Responsive Adjustments (to prevent horizontal scroll on smaller screens) --- */
+
+/* Medium Screens (e.g., small laptops, large tablets) */
+@media (max-width: 1400px) {
+  .metrics {
+    /* Reduce to 3 columns to save space */
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
-.support button:hover {
-  background-color: #0056b3;
+/* Tablet Screens */
+@media (max-width: 900px) {
+  .metrics {
+    /* Reduce to 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-/* Responsive tweaks */
-@media (max-width: 768px) {
+/* Mobile Screens (Charts and Metrics stack) */
+@media (max-width: 600px) {
+
+  .metrics,
   .charts {
+    /* Stack everything vertically (1 column) */
     grid-template-columns: 1fr;
+  }
+}
+
+.crm-overview-content {
+  display: flex;
+  gap: 20px;
+  background-color: white;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Left panel takes more space */
+.left-panel {
+  flex: 3;
+  /* ~70% */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Right panel smaller */
+.right-panel {
+  flex: 1.2;
+  /* ~30% */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Metrics grid */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+/* Chart grid */
+.charts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.chart-section {
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsiveness */
+@media (max-width: 1200px) {
+  .crm-overview-content {
+    flex-direction: column;
+  }
+
+  .left-panel,
+  .right-panel {
+    flex: 1 1 100%;
   }
 
   .metrics {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .filters {
+  .charts {
     grid-template-columns: 1fr;
   }
+}
+
+#salesPipelineChart,
+#dealLossChart {
+  height: 180px !important;
+  width: 100% !important;
 }
