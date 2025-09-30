@@ -7,9 +7,9 @@
 
 .dashboard-content {
   flex-grow: 1; // Take up remaining space
-  border: 2px solid black; // The main black border
+  // border: 2px solid black; // The main black border
   border-radius: 8px; // Optional: for a softer look
-  margin: 15px; // A little space from the edges
+  margin: 5px; // A little space from the edges
 }
 
 .content-wrapper {
@@ -40,14 +40,7 @@
   font-weight: bold;
   border-bottom: 3px solid #fff;
 }
-.crm-overview-content {
-  padding: 10px;
-  background-color: white;
-  min-height: 100%;
-  width: 100%;
-  display: flex;
-  font-family: Inter, Roboto, sans-serif;
-}
+
 
 /* --- 1. KPI Metrics: 4 items per row (Total 8, creating 2 rows) --- */
 .metrics {
@@ -58,10 +51,10 @@
 
 .metric {
   background: linear-gradient(145deg, #4a69bd, #3b5998);
-  padding: 16px;
+  padding: 4px;
   border-radius: 8px;
   text-align: center;
-  font-weight: bold;
+  font-weight: 500;
   color: #fdf9f9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
@@ -69,7 +62,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 80px;
+  min-height: 77px;
 }
 
 .metric:hover {
@@ -77,18 +70,18 @@
 }
 
 .metric span {
-  display: block;
-  margin-top: 6px;
-  font-size: 24px;
-  color: hsl(0, 50%, 98%);
-  font-weight: 600;
+     display: block;
+    margin-top: 6px;
+    font-size: 16px;
+    color: hsl(0, 50%, 98%);
+    font-weight: 500;
 }
 
 /* --- 2. Chart Containers: 2 items per row (Total 4, creating 2 rows) --- */
 .charts {
   display: grid;
   /* Desktop/Wide Screens: 2 equal columns guaranteed */
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 24px;
   margin-bottom: 30px;
 }
@@ -164,7 +157,7 @@
 .crm-overview-content {
   display: flex;
   gap: 20px;
-  background-color: white;
+  // background-color: white;
   padding: 10px;
   width: 100%;
   box-sizing: border-box;
@@ -198,7 +191,7 @@
 /* Chart grid */
 .charts {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 20px;
 }
 
@@ -221,7 +214,7 @@
   }
 
   .metrics {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 
   .charts {
@@ -273,7 +266,8 @@
 /* Grid Layout */
 .grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr); /* 12-column system */
+  grid-template-columns: repeat(12, 1fr);
+  /* 12-column system */
   gap: 20px;
 }
 
@@ -284,14 +278,14 @@
   // padding: 18px;
   // box-shadow: 0 4px 15px rgba(0,0,0,0.4);
   // transition: transform 0.25s ease, box-shadow 0.25s ease;
-  
-    padding: 10px;
-    border-radius: 10px;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
 // .card:hover {
@@ -303,8 +297,8 @@
   font-size: 1rem;
   margin-bottom: 12px;
   font-weight: 500;
-  color:black;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: black;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 6px;
 }
 
@@ -333,8 +327,9 @@
   margin: 8px 0;
   font-size: 0.95rem;
 }
+
 .status-row {
-  color:#06b6d4;
+  color: #06b6d4;
 }
 
 .status-val {
@@ -348,9 +343,18 @@
   display: inline-block;
   margin-right: 6px;
 }
-.dot.green { background: #2ecc71; }
-.dot.yellow { background: #f1c40f; }
-.dot.red { background: #e74c3c; }
+
+.dot.green {
+  background: #2ecc71;
+}
+
+.dot.yellow {
+  background: #f1c40f;
+}
+
+.dot.red {
+  background: #e74c3c;
+}
 
 /* Alerts */
 .alerts-small ul,
@@ -369,34 +373,40 @@
 /* Chart Cards (big = half width) */
 .chart-card.big {
   grid-column: span 6;
-  height: 350px; /* Increased for visibility */
+  height: 350px;
+  /* Increased for visibility */
 }
 
 /* Wide Card (full width bottom) */
 .wide-card {
   grid-column: span 12;
-  
+
 }
 
 /* Responsive */
 @media (max-width: 992px) {
+
   .small-card,
   .status-card,
   .alerts-small,
   .chart-card.big,
   .wide-card {
-    grid-column: span 12; /* stack vertically */
+    grid-column: span 12;
+    /* stack vertically */
   }
 }
-.filter-card {
-    padding: 1rem;
-}
-.form-label {
-    font-weight: 600;
-    color: #333;
-}
-.navtabsStyle{
 
-    background: #1e3c72;
-    border-radius: 0px 0px 0px 23px;
+.filter-card {
+  margin-left: 2px;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #333;
+}
+
+.navtabsStyle {
+
+  background: #1e3c72;
+  border-radius: 0px 0px 0px 23px;
 }

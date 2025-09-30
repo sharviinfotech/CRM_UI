@@ -1,101 +1,108 @@
-<div class="dashboard-wrapper">
-
-  <div class="header-container text-white"> 
+<!-- style="background: #1e3c723b; -->
+<div class="card-Dashboard">
+  <div class="card-header-Dashboard">
     <div class="row">
-        <div class="col-md-8 col-sm-8 col-lg-8" style="background: #1e3c723b;">
+      <div class="col-md-8 col-sm-8 col-lg-8" >
         <span class="fs-4 fw-bold">CRM Dashboard</span>
       </div>
-     <div class="col-md-4 col-sm-4 col-lg-4 navtabsStyle">
-       <ul class="nav nav-tabs custom-tabs">
-        <li class="nav-item">
-          <a class="nav-link" [ngClass]="{active: activeTab==='childoverview'}"
-            (click)="childcomponentNavigate('childoverview')" >Overview</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [ngClass]="{active: activeTab==='childagents'}"
-            (click)="childcomponentNavigate('childagents')" >Agents</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [ngClass]="{active: activeTab==='childdeals'}"
-            (click)="childcomponentNavigate('childdeals')" >Deals</a>
-        </li>
-      </ul>
-     </div>
-    </div>
-  
-  </div>
-
-  <div class="dashboard-content p-3">
-    <div class="row">
-      <div class="col-lg-3 col-md-4 col-sm-12 side-panel p-3">
-        <div class="filter-card">
-          <label class="form-label">Report date</label>
-          <div class="d-flex align-items-center mb-3">
-            <input type="date" class="form-control me-2" value="2024-04-01">
-            <input type="date" class="form-control" value="2024-07-01">
-          </div>
-          <label class="form-label">Deal Owner</label>
-          <select class="form-select mb-3">
-            <option>All</option>
-          </select>
-          <label class="form-label">Deal Stage</label>
-          <select class="form-select mb-3">
-            <option>All</option>
-          </select>
-          <label class="form-label">Pipeline</label>
-          <select class="form-select mb-3">
-            <option>All</option>
-          </select>
-          <label class="form-label">Deal Label</label>
-          <select class="form-select">
-            <option>All</option>
-          </select>
-        </div>
+      <div class="col-md-4 col-sm-4 col-lg-4 navtabsStyle">
+        <ul class="nav nav-tabs custom-tabs">
+          <li class="nav-item">
+            <a class="nav-link" [ngClass]="{active: activeTab==='childoverview'}"
+              (click)="childcomponentNavigate('childoverview')">Overview</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [ngClass]="{active: activeTab==='childagents'}"
+              (click)="childcomponentNavigate('childagents')">Agents</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [ngClass]="{active: activeTab==='childdeals'}"
+              (click)="childcomponentNavigate('childdeals')">Deals</a>
+          </li>
+        </ul>
       </div>
-      <div class="col-lg-9 content-wrapper p-3 bordered-content">
-        <!-- <router-outlet></router-outlet> -->
-        <div class="crm-overview-content" *ngIf="OverviewCard">
-          <!-- Left Panel -->
-          <div class="left-panel">
-            <div class="metrics">
-              <div class="metric">Total sales <span>$12.5M</span></div>
-              <div class="metric">Win rate <span>28%</span></div>
-              <div class="metric">Close rate <span>15%</span></div>
-              <div class="metric">Avg days to close <span>45</span></div>
-              <div class="metric">Pipeline value <span>$50.2M</span></div>
-              <div class="metric">Open deals <span>120</span></div>
-              <div class="metric">Weighted value <span>$35.1M</span></div>
-              <div class="metric">Avg open deal age <span>22</span></div>
+    </div>
+  </div>
+  <div class="card-body-Dashboard">
+    <div class="dashboard-content">
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2 side-panel">
+          <div class="filter-card card">
+            <label class="form-label">Report date</label>
+            <div class="d-flex align-items-center mb-3">
+              <input type="date" class="form-control me-2" value="2024-04-01">
+              <!-- <input type="date" class="form-control" value="2024-07-01"> -->
             </div>
-
-            <div class="charts">
-              <div class="chart-section">
-                <h3>Won deals (last 12 months)</h3>
-                <canvas id="wonDealsChart"></canvas>
-              </div>
-              <div class="chart-section">
-                <h3>Deals projection (future 12 months)</h3>
-                <canvas id="dealsProjectionChart"></canvas>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Panel -->
-          <div class="right-panel">
-            <div class="chart-section">
-              <h3>Sales pipeline</h3>
-              <canvas id="salesPipelineChart"></canvas>
-            </div>
-
-            <div class="chart-section">
-              <h3>Deal loss reasons</h3>
-              <canvas id="dealLossChart"></canvas>
-            </div>
+            <label class="form-label">Deal Owner</label>
+            <select class="form-select mb-3">
+              <option>All</option>
+            </select>
+            <label class="form-label">Deal Stage</label>
+            <select class="form-select mb-3">
+              <option>All</option>
+            </select>
+            <label class="form-label">Pipeline</label>
+            <select class="form-select mb-3">
+              <option>All</option>
+            </select>
+            <label class="form-label">Deal Label</label>
+            <select class="form-select">
+              <option>All</option>
+            </select>
           </div>
         </div>
-        <div class="dashboard-container-agent" *ngIf="agentcard">
+        <div class="col-lg-10 col-md-10 col-sm-10">
+          <!-- <router-outlet></router-outlet> -->
+          <div  *ngIf="OverviewCard">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="left-panel">
+                  <div class="metrics">
+                    <div class="metric">Total sales <span>$12.5M</span></div>
+                    <div class="metric">Win rate <span>28%</span></div>
+                    <div class="metric">Close rate <span>15%</span></div>
+                    <div class="metric">Avg days to close <span>45</span></div>
+                    <div class="metric">Pipeline value <span>$50.2M</span></div>
+                    <div class="metric">Open deals <span>120</span></div>
+                    <div class="metric">Weighted value <span>$35.1M</span></div>
+                    <div class="metric">Avg open deal age <span>22</span></div>
+                  </div>
 
-         
+                  <div class="charts">
+                    <div class="chart-section">
+                      <h3>Won deals (last 12 months)</h3>
+                      <canvas id="wonDealsChart"></canvas>
+                    </div>
+                    <div class="chart-section">
+                      <h3>Deals projection (future 12 months)</h3>
+                      <canvas id="dealsProjectionChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="right-panel">
+                  <div class="chart-section">
+                    <h3>Sales pipeline</h3>
+                    <canvas id="salesPipelineChart"></canvas>
+                  </div>
+
+                  <div class="chart-section">
+                    <h3>Deal loss reasons</h3>
+                    <canvas id="dealLossChart"></canvas>
+                  </div>
+                  <div class="chart-section">
+                    <h3>Deal won reasons</h3>
+                    <canvas id="dealLossChart"></canvas>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="dashboard-container-agent" *ngIf="agentcard">
+
+
 
             <div class="tableFixHead table-responsive">
               <table class="table  table-bordered table-bordered">
@@ -385,76 +392,77 @@
                 <span>150</span>
               </div>
             </div>
-        
-        </div>
-        <div class="dashboard-container" *ngIf="dealscard">
-          <div class="deals-table-container">
-            <table class="deals-table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Title</th>
-                  <th>Owner</th>
-                  <th>Stage</th>
-                  <th>Status</th>
-                  <th>Label</th>
-                  <th>Value</th>
-                  <th>Probability</th>
-                  <th>Products count</th>
-                  <th class="rotten-days-header">Rotten days</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>4999</td>
-                  <td>reddit deal</td>
-                  <td>Mia Davis</td>
-                  <td>Closed Won</td>
-                  <td class="status-won">won</td>
-                  <td>New Business</td>
-                  <td>956.0K</td>
-                  <td>100.00%</td>
-                  <td>2</td>
-                  <td class="rotten-days">44</td>
-                </tr>
-                <tr>
-                  <td>4817</td>
-                  <td>Coupler.io deal</td>
-                  <td>Hiroshi Tanaka</td>
-                  <td>Lead In</td>
-                  <td class="status-open">open</td>
-                  <td>Partnership</td>
-                  <td>368.5K</td>
-                  <td>50.00%</td>
-                  <td>6</td>
-                  <td class="rotten-days">23</td>
-                </tr>
-                <tr>
-                  <td>4274</td>
-                  <td>Dell deal</td>
-                  <td>John Smith</td>
-                  <td>Interview</td>
-                  <td class="status-open">open</td>
-                  <td>Upsell</td>
-                  <td>368.0K</td>
-                  <td>30.00%</td>
-                  <td>7</td>
-                  <td class="rotten-days">32</td>
-                </tr>
-                <tr>
-                  <td>2434</td>
-                  <td>google deal</td>
-                  <td>John Smith</td>
-                  <td>Negotiation</td>
-                  <td class="status-open">open</td>
-                  <td>Remarketing</td>
-                  <td>316.5K</td>
-                  <td>40.00%</td>
-                  <td>2</td>
-                  <td class="rotten-days">43</td>
-                </tr>
-              </tbody>
-            </table>
+
+          </div>
+          <div class="dashboard-container" *ngIf="dealscard">
+            <div class="tableFixHead table-responsive">
+              <table class="table  table-bordered table-bordered">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Owner</th>
+                    <th>Stage</th>
+                    <th>Status</th>
+                    <th>Label</th>
+                    <th>Value</th>
+                    <th>Probability</th>
+                    <th>Products count</th>
+                    <th class="rotten-days-header">Rotten days</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4999</td>
+                    <td>reddit deal</td>
+                    <td>Mia Davis</td>
+                    <td>Closed Won</td>
+                    <td class="status-won">won</td>
+                    <td>New Business</td>
+                    <td>956.0K</td>
+                    <td>100.00%</td>
+                    <td>2</td>
+                    <td class="rotten-days">44</td>
+                  </tr>
+                  <tr>
+                    <td>4817</td>
+                    <td>Coupler.io deal</td>
+                    <td>Hiroshi Tanaka</td>
+                    <td>Lead In</td>
+                    <td class="status-open">open</td>
+                    <td>Partnership</td>
+                    <td>368.5K</td>
+                    <td>50.00%</td>
+                    <td>6</td>
+                    <td class="rotten-days">23</td>
+                  </tr>
+                  <tr>
+                    <td>4274</td>
+                    <td>Dell deal</td>
+                    <td>John Smith</td>
+                    <td>Interview</td>
+                    <td class="status-open">open</td>
+                    <td>Upsell</td>
+                    <td>368.0K</td>
+                    <td>30.00%</td>
+                    <td>7</td>
+                    <td class="rotten-days">32</td>
+                  </tr>
+                  <tr>
+                    <td>2434</td>
+                    <td>google deal</td>
+                    <td>John Smith</td>
+                    <td>Negotiation</td>
+                    <td class="status-open">open</td>
+                    <td>Remarketing</td>
+                    <td>316.5K</td>
+                    <td>40.00%</td>
+                    <td>2</td>
+                    <td class="rotten-days">43</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
