@@ -28,13 +28,13 @@ export const MENU: MenuItem[] = [
             //     parentId: 2,
             //     icon: 'bx-user-plus',
             // },
-             {
-                id:2,
-                label: 'Agents',
-                link: '/childagents',
-                parentId: 2,
-                icon: 'bx-user-plus',
-            },
+            //  {
+            //     id:2,
+            //     label: 'Agents',
+            //     link: '/childagents',
+            //     parentId: 2,
+            //     icon: 'bx-user-plus',
+            // },
             //    {
             //     id:2,
             //     label: 'Deals',
