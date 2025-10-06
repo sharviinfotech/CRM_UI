@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgChartsModule } from 'ng2-charts';
-import { registerables } from 'chart.js';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+import {
+  Chart,
+  ChartConfiguration,
+  ChartDataset,
+  ChartOptions,
+  ChartType,
+  registerables,
+  ChartData
+} from 'chart.js';
+
 Chart.register(...registerables);
-import { ChartOptions, ChartType, ChartDataset ,Chart} from 'chart.js';
 
 @Component({
   selector: 'app-smart-dashboard',
@@ -15,9 +23,10 @@ import { ChartOptions, ChartType, ChartDataset ,Chart} from 'chart.js';
 })
 export class DefaultComponent {
   activeTab: string = 'childoverview';
-  OverviewCard:boolean= true;
-  agentcard: boolean;
-  dealscard: boolean;
+  OverviewCard = true;
+  agentcard = false;
+  dealscard = false;
+
   // --- KPI Card Data ---
   totalSales = '$5.2M';
   winRate = '16.92%';
@@ -28,113 +37,255 @@ export class DefaultComponent {
   weightedValue = '$35.6M';
   avgOpenDealAge = '201.67';
 
-  // --- Line Chart Data: Won deals (last 12 months) ---
-  wonDealsChartOptions: ChartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
+  // --- Line Chart: Won Deals ---
+  public lineChartData: ChartConfiguration<'line'>['data'] = {
+    labels: [
+      'Nov 2024', 'Dec 2024', 'Jan 2025', 'Feb 2025', 'Mar 2025',
+      'Apr 2025', 'May 2025', 'Jun 2025', 'Jul 2025', 'Aug 2025', 'Sep 2025'
+    ],
+    datasets: [
+      {
+        data: [600, 450, 700, 300, 500, 650, 400, 550, 500, 350, 600],
+        label: 'Closed Value',
+        fill: true,
+        tension: 0.4,
+        borderColor: '#3b82f6',
+        backgroundColor: 'rgba(59,130,246,0.2)',
+        pointBackgroundColor: '#ef4444',
+        pointRadius: 5
+      } as ChartDataset<'line'>
+      ,
+      {
+        data: [40, 45, 35, 30, 50, 40, 45, 35, 40, 30, 50],
+        label: 'Won Deals',
+        fill: false,
+        borderColor: '#22c55e',
+        backgroundColor: '#22c55e',
+        tension: 0.4,
+        borderDash: [5, 5]
+      } as ChartDataset<'line'>
+    ]
   };
-  wonDealsChartLabels: string[] = ['Oct 24', 'Nov 24', 'Dec 24', 'Jan 25', 'Feb 25', 'Mar 25', 'Apr 25', 'May 25', 'Jun 25', 'Jul 25', 'Aug 25', 'Sep 25'];
-  wonDealsChartType: ChartType = 'line';
-  wonDealsChartData: ChartDataset[] = [
-    {
-      data: [350, 420, 500, 410, 550, 600, 520, 480, 550, 650, 700, 680],
-      label: 'Closed value',
-      borderColor: '#4d87f5',
-      backgroundColor: 'rgba(77, 135, 245, 0.2)',
-      fill: true
-    },
-    {
-      data: [5, 6, 8, 7, 9, 10, 8, 7, 9, 11, 12, 11],
-      label: 'Won deals',
-      borderColor: '#1e3c72',
-      backgroundColor: 'rgba(30, 60, 114, 0.2)',
-      fill: true
-    }
-  ];
 
-  // --- Line Chart Data: Deals projection (future 12 months) ---
-  dealsProjectionChartOptions: ChartOptions = {
+  public lineChartOptions: ChartOptions<'line'> = {
     responsive: true,
-    maintainAspectRatio: false,
-  };
-  dealsProjectionChartLabels: string[] = ['Sep 25', 'Oct 25', 'Nov 25', 'Dec 25', 'Jan 26', 'Feb 26', 'Mar 26', 'Apr 26', 'May 26', 'Jun 26', 'Jul 26', 'Aug 26'];
-  dealsProjectionChartType: ChartType = 'line';
-  dealsProjectionChartData: ChartDataset[] = [
-    {
-      data: [2500, 2800, 3100, 3000, 3300, 3500, 3200, 3000, 3400, 3600, 3800, 3500],
-      label: 'Projected value',
-      borderColor: '#48c9b0',
-      backgroundColor: 'rgba(72, 201, 176, 0.2)',
-      fill: true
+    plugins: {
+      legend: { position: 'top', labels: { boxWidth: 12 } },
+      // MODIFIED: Set display to false to hide the chart title
+      title: { display: false }
     },
-    {
-      data: [150, 160, 180, 170, 190, 200, 180, 170, 190, 210, 220, 200],
-      label: 'Deals due',
-      borderColor: '#2e8b57',
-      backgroundColor: 'rgba(46, 139, 87, 0.2)',
-      fill: true
+    scales: {
+      x: { grid: { display: false } },
+      y: { grid: { color: 'rgba(200,200,200,0.2)' } }
     }
-  ];
+  };
+  // --- Deals Projection Chart ---
+  public lineData: ChartConfiguration<'line'>['data'] = {
+    labels: [
+      'Nov 2025', 'Dec 2025', 'Jan 2026', 'Feb 2026', 'Mar 2026',
+      'Apr 2026', 'May 2026', 'Jun 2026', 'Jul 2026', 'Aug 2026', 'Sep 2026'
+    ],
+    datasets: [
+      {
+        data: [600, 450, 700, 300, 500, 650, 400, 550, 500, 350, 600],
+        label: 'Projected value',
+        fill: true,
+        tension: 0.4,
+        borderColor: '#3b82f6',
+        backgroundColor: '#33067ce8',
+        pointBackgroundColor: '#ef4444',
+        pointRadius: 5
+      } as ChartDataset<'line'>
+      ,
+      {
+        data: [40, 45, 35, 30, 50, 40, 45, 35, 40, 30, 50],
+        label: 'Deals due',
+        fill: false,
+        borderColor: '#ee0c0ce4',
+        backgroundColor: '#ee0c0ce4',
+        tension: 0.4,
+        borderDash: [5, 5]
+      } as ChartDataset<'line'>
+    ]
+  };
 
-  // --- Donut Chart Data: Sales pipeline ---
-salesPipelineChartOptions: ChartOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: { position: 'right' }
-  }
-};
-  salesPipelineChartLabels: string[] = ['Lead in', 'Contact Made', 'Interview', 'Negotiation', 'Proposal', 'Closed Lost', 'Closed Won'];
-  salesPipelineChartData: ChartDataset[] = [
-    {
-      data: [28.65, 16.46, 14.85, 5.86, 9.84, 21.32, 3.02],
-      backgroundColor: ['#48c9b0', '#cd6155', '#e67e22', '#9b59b6', '#3498db', '#34495e', '#2ecc71']
+  public lineOptions: ChartOptions<'line'> = {
+    responsive: true,
+    plugins: {
+      legend: { position: 'top', labels: { boxWidth: 12 } },
+      title: { display: false } // Change 'display' to false to hide the title
+    },
+    scales: {
+      x: { grid: { display: false } },
+      y: { grid: { color: 'rgba(200,200,200,0.2)' } }
     }
-  ];
-  salesPipelineChartType: ChartType = 'doughnut';
+  };
+  // --- Sales Pipeline Donut Chart ---
+  doughnutChartLabels: string[] = ['Lead In', 'Contact Made', 'Interview', 'Proposal', 'Negotiation', 'Closed Lost'];
+  doughnutChartData: ChartData<'doughnut'> = {
+    labels: this.doughnutChartLabels,
+    datasets: [{
+      data: [15, 25, 10, 20, 18, 12],
+      backgroundColor: ['#4285F4', '#7E57C2', '#5C6BC0', '#EC407A', '#FFA726', '#EF5350'],
+      borderWidth: 2
+    }]
+  };
+  doughnutChartType: ChartType = 'doughnut';
+  doughnutChartOptions: ChartOptions<'doughnut'> = {
+    responsive: true,
+    plugins: {
+      legend: { position: 'top', labels: { color: '#333', font: { size: 12 } } },
+      title: { display: true, text: 'Sales Pipeline' }
+    }
+  };
 
-  // --- Donut Chart Data: Deal loss reasons ---
-   dealLossChartOptions: ChartOptions = {
+  // --- Deal Loss Donut Chart ---
+  doughnutLabels: string[] = ['Feature Limitations', 'Budget Constraints', 'Price Too High', 'Better Alternative', 'Lack of Urgency'];
+
+  doughnutData: ChartData<'doughnut'> = {
+    labels: this.doughnutLabels,
+    datasets: [{
+      data: [25, 15, 20, 25, 15],
+      backgroundColor: [
+        '#4285F4', // blue
+        '#7E57C2', // purple
+        '#5C6BC0', // indigo
+        '#EC407A', // pink
+        '#FFA726'  // orange
+      ],
+      borderWidth: 2,
+      borderColor: '#fff'
+    }]
+  };
+
+  doughnutType: ChartType = 'doughnut';
+
+  doughnutOptions: ChartOptions<'doughnut'> = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      legend: { position: 'right' }
+      legend: {
+        position: 'top',
+        labels: {
+          color: '#333',
+          font: { size: 12 }
+        }
+      },
+      title: {
+        display: true,
+        text: 'Deal Loss Reasons',
+        font: { size: 14 }
+      },
+      tooltip: {
+        callbacks: {
+          label: (context) => {
+            const label = context.label || '';
+            const value = context.parsed;
+            return `${label}: ${value}%`;
+          }
+        }
+      }
     }
   };
-  dealLossChartLabels: string[] = ['Lack of urgency', 'Feature limitations', 'Budget constraints', 'Price too high', 'Better offer'];
-  dealLossChartData: ChartDataset[] = [
-    {
-      data: [15.2, 32.87, 21.1, 18.48, 12.35],
-      backgroundColor: ['#f1c40f', '#e67e22', '#3498db', '#c0392b', '#7f8c8d']
-    }
+
+
+  // --- DOUGHNUT CHART CONFIGURATION ---
+
+  ChartLabels: string[] = [
+    'Product Fit',
+    'Competative Pricing',
+    'Strong Relationship',
+    'Quick Response Time',
+    // 'Brand Reputation',
+    // 'After Sales Support'
   ];
-  dealLossChartType: ChartType = 'doughnut';
 
+  ChartData: ChartData<'doughnut'> = {
+    // Assuming this correctly references the above array
+    labels: this.ChartLabels,
+    datasets: [{
+      data: [30, 20, 35, 15,],
+      backgroundColor: ['#4285F4', '#EC407A', '#5C6BC0', '#FFA726'],
+      borderWidth: 2
+    }]
+  };
 
+  ChartType: ChartType = 'doughnut';
 
-  ngOnInit(): void { }
-  constructor(private router: Router) {
+  ChartOptions: ChartOptions<'doughnut'> = {
+    responsive: true,
+    plugins: {
+      legend: {
+        // Position 'top' tells Chart.js to lay items out horizontally
+        position: 'top',
+        // Setting 'align' to 'start' (left) often helps control flow
+        align: 'start',
+        labels: {
+          color: '#333',
+          font: { size: 12 },
+          // You can slightly reduce boxWidth to fit more items on one line
+          // boxWidth: 10 
+        }
+      },
+      title: {
+        display: true,
+        text: 'Deal Won Reasons' // Based on your HTML this is overridden by the <h3>
+      }
+    }
+  };
 
-  }
+  // Chart Data
+  public salesPipelineData: ChartData<'bar'> = {
+    labels: [
+      'Zara Khan', 'Lily Nguyen', 'Mia Davis', 'Mohammed Ali',
+      'Oliver Kim', 'Amelia Wilson', 'John Smith', 'Antonio Costa',
+      'Isabella Rossi', 'Sebastian Müller', 'Sophia Liu', 'Daniel Garcia'
+    ],
+    datasets: [
+      { label: 'Closed Lost', data: [20, 25, 30, 28, 22, 24, 26, 27, 23, 25, 24, 28], backgroundColor: '#0a4ef0' },
+      { label: 'Closed Won', data: [10, 15, 18, 14, 12, 13, 10, 11, 14, 12, 11, 13], backgroundColor: '#59b2fc' },
+      { label: 'Contact Made', data: [30, 28, 25, 22, 30, 28, 29, 27, 31, 29, 28, 27], backgroundColor: '#6b5b95' },
+      { label: 'Interview', data: [25, 20, 22, 24, 26, 25, 23, 20, 21, 22, 24, 23], backgroundColor: '#f7cac9' },
+      { label: 'Lead In', data: [35, 32, 28, 30, 33, 31, 29, 34, 32, 33, 30, 31], backgroundColor: '#f7786b' },
+      { label: 'Negotiation', data: [15, 18, 12, 14, 13, 11, 15, 12, 14, 13, 12, 11], backgroundColor: '#88d8b0' },
+      { label: 'Proposal', data: [20, 15, 18, 17, 16, 15, 19, 18, 17, 16, 15, 14], backgroundColor: '#03c6fc' }
+    ]
+  };
 
-  childcomponentNavigate(tab) {
+  // Chart Options
+  public salesPipelineOptions: ChartOptions<'bar'> = {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          font: { size: 12 },
+        },
+      },
+      title: {
+        display: true,
+        text: 'Sales Pipeline by Agent',
+        font: { size: 16 },
+      },
+    },
+    scales: {
+      x: {
+        stacked: true,
+        ticks: { stepSize: 20 },
+      },
+      y: {
+        stacked: true,
+      },
+    },
+  };
+
+  constructor(private router: Router) { }
+
+  childcomponentNavigate(tab: string) {
     this.activeTab = tab;
-  if (tab === 'childoverview') {
-    // this.router.navigate(['childoverview']);
-    this.OverviewCard = true
-    this.agentcard = false
-    this.dealscard = false
-  } else if (tab === 'childagents') {
-    // this.router.navigate(['childagents']);
-     this.OverviewCard = false
-    this.agentcard = true
-    this.dealscard = false
-  } else if (tab === 'childdeals') {
-    // this.router.navigate(['childdeals']);
-      this.OverviewCard = false
-    this.agentcard = false
-    this.dealscard = true
-  }
-
+    this.OverviewCard = tab === 'childoverview';
+    this.agentcard = tab === 'childagents';
+    this.dealscard = tab === 'childdeals';
   }
 }

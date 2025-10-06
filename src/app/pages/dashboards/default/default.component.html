@@ -2,7 +2,7 @@
 <div class="card-Dashboard">
   <div class="card-header-Dashboard">
     <div class="row">
-      <div class="col-md-8 col-sm-8 col-lg-8" >
+      <div class="col-md-8 col-sm-8 col-lg-8">
         <span class="fs-4 fw-bold">CRM Dashboard</span>
       </div>
       <div class="col-md-4 col-sm-4 col-lg-4 navtabsStyle">
@@ -53,7 +53,7 @@
         </div>
         <div class="col-lg-10 col-md-10 col-sm-10">
           <!-- <router-outlet></router-outlet> -->
-          <div  *ngIf="OverviewCard">
+          <div *ngIf="OverviewCard">
             <div class="row">
               <div class="col-lg-8">
                 <div class="left-panel">
@@ -69,13 +69,18 @@
                   </div>
 
                   <div class="charts">
-                    <div class="chart-section">
+                    <div class="chart-section" style="height: 400px; width: 100%;">
                       <h3>Won deals (last 12 months)</h3>
-                      <canvas id="wonDealsChart"></canvas>
+                      <canvas baseChart [data]="lineChartData" [options]="lineChartOptions" chartType="line">
+                      </canvas>
                     </div>
+
+
                     <div class="chart-section">
                       <h3>Deals projection (future 12 months)</h3>
-                      <canvas id="dealsProjectionChart"></canvas>
+                      <canvas baseChart [data]="lineData" [options]="lineOptions" chartType="line">
+
+                      </canvas>
                     </div>
                   </div>
                 </div>
@@ -84,16 +89,18 @@
                 <div class="right-panel">
                   <div class="chart-section">
                     <h3>Sales pipeline</h3>
-                    <canvas id="salesPipelineChart"></canvas>
+                    <canvas baseChart [data]="doughnutChartData" [type]="doughnutChartType" [options]="chartOptions">
+                    </canvas>
                   </div>
 
                   <div class="chart-section">
                     <h3>Deal loss reasons</h3>
-                    <canvas id="dealLossChart"></canvas>
+                    <canvas baseChart [data]="doughnutData" [type]="doughnutType" [options]="chartOptions">
+                    </canvas>
                   </div>
                   <div class="chart-section">
                     <h3>Deal won reasons</h3>
-                    <canvas id="dealLossChart"></canvas>
+                    <canvas baseChart [data]="ChartData" [type]="ChartType" [options]="chartOptions"></canvas>
                   </div>
                 </div>
               </div>
@@ -248,7 +255,9 @@
             <div class="pipeline-chart-container">
               <div class="chart-header">
                 <div class="chart-title">Sales pipeline by agent</div>
-                <div class="legend">
+                <canvas baseChart [data]="salesPipelineData" [options]="salesPipelineOptions" chartType="bar">
+                </canvas>
+                <!-- <div class="legend">
                   <span class="legend-item blue-dark"><span class="legend-box"></span>Closed Lost</span>
                   <span class="legend-item blue-light"><span class="legend-box"></span>Closed Won</span>
                   <span class="legend-item red-dark"><span class="legend-box"></span>Contact Made</span>
@@ -391,6 +400,9 @@
                 <span>100</span>
                 <span>150</span>
               </div>
+            </div> -->
+              </div>
+
             </div>
 
           </div>
@@ -468,4 +480,3 @@
       </div>
     </div>
   </div>
-</div>
