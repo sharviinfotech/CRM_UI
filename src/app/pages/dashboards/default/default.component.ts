@@ -50,8 +50,8 @@ export class DefaultComponent {
         fill: true,
         tension: 0.4,
         borderColor: '#3b82f6',
-        backgroundColor: 'hsla(13, 45%, 54%, 0.93)',
-        pointBackgroundColor: '#ef4444',
+        backgroundColor: 'rgba(59, 130, 246, 0.2)', // Light Blue fill
+      pointBackgroundColor: '#3b82f6',
         pointRadius: 5
       } as ChartDataset<'line'>
       ,
@@ -59,10 +59,11 @@ export class DefaultComponent {
         data: [40, 70, 650, 450, 250, 60, 200, 35, 475, 60, 300],
         label: 'Won Deals',
         fill: false,
-        borderColor: '#f15b10ff',
-        backgroundColor: 'hsla(265, 57%, 66%, 0.86)',
+        borderColor: '#1e3a8a', // Dark Blue line
+      backgroundColor: '#A4DCB4',  //#1e3a8a  //  //#88A2BF
+      borderDash: [0], // Solid line (remove dashed look)
+      pointBackgroundColor: '#1e3a8a',
         tension: 0.4,
-        borderDash: [5, 5]
       } as ChartDataset<'line'>
     ]
   };
@@ -91,9 +92,9 @@ export class DefaultComponent {
         label: 'Projected value',
         fill: true,
         tension: 0.4,
-        borderColor: '#3b82f6',
-        backgroundColor: '#4a9bbde8',
-        pointBackgroundColor: '#ef4444',
+        borderColor: '#7e98b5ff', //#88A2BF // #3b82f6
+      backgroundColor: 'rgba(59, 130, 246, 0.2)', // Light Blue fill
+      pointBackgroundColor: '#3b82f6',
         pointRadius: 5
       } as ChartDataset<'line'>
       ,
@@ -101,10 +102,11 @@ export class DefaultComponent {
         data: [40, 80, 135, 400, 150, 250, 85, 350, 40, 450, 280],
         label: 'Deals due',
         fill: false,
-        borderColor: '#ee0c0ce4',
-        backgroundColor: 'hsla(70, 49%, 47%, 0.98)',
+        borderColor: '#1e3a8a', // Dark Blue line
+      backgroundColor: '#dcc2a4ff',  //#1e3a8a  //  //#88A2BF
+      borderDash: [0], // Solid line
+      pointBackgroundColor: '#1e3a8a',
         tension: 0.4,
-        borderDash: [5, 5]
       } as ChartDataset<'line'>
     ]
   };
@@ -242,13 +244,13 @@ export class DefaultComponent {
       'Isabella Rossi', 'Sebastian Müller', 'Sophia Liu', 'Daniel Garcia'
     ],
     datasets: [
-      { label: 'Closed Lost', data: [20, 25, 30, 28, 22, 24, 26, 27, 23, 25, 24, 28], backgroundColor: '#0a4ef0' },
+      { label: 'Closed Lost', data: [20, 25, 30, 28, 22, 24, 26, 27, 23, 25, 24, 28], backgroundColor: '#537fe5ff' },
       { label: 'Closed Won', data: [10, 15, 18, 14, 12, 13, 10, 11, 14, 12, 11, 13], backgroundColor: '#59b2fc' },
-      { label: 'Contact Made', data: [30, 28, 25, 22, 30, 28, 29, 27, 31, 29, 28, 27], backgroundColor: '#6b5b95' },
+      { label: 'Contact Made', data: [30, 28, 25, 22, 30, 28, 29, 27, 31, 29, 28, 27], backgroundColor: '#5b4f7aff' },
       { label: 'Interview', data: [25, 20, 22, 24, 26, 25, 23, 20, 21, 22, 24, 23], backgroundColor: '#f7cac9' },
-      { label: 'Lead In', data: [35, 32, 28, 30, 33, 31, 29, 34, 32, 33, 30, 31], backgroundColor: '#f7786b' },
-      { label: 'Negotiation', data: [15, 18, 12, 14, 13, 11, 15, 12, 14, 13, 12, 11], backgroundColor: '#88d8b0' },
-      { label: 'Proposal', data: [20, 15, 18, 17, 16, 15, 19, 18, 17, 16, 15, 14], backgroundColor: '#03c6fc' }
+      { label: 'Lead In', data: [35, 32, 28, 30, 33, 31, 29, 34, 32, 33, 30, 31], backgroundColor: '#d18279ff' },
+      { label: 'Negotiation', data: [15, 18, 12, 14, 13, 11, 15, 12, 14, 13, 12, 11], backgroundColor: '#76bb98ff' },
+      { label: 'Proposal', data: [20, 15, 18, 17, 16, 15, 19, 18, 17, 16, 15, 14], backgroundColor: '#5babc1ff' }
     ]
   };
 
@@ -260,14 +262,14 @@ export class DefaultComponent {
       legend: {
         position: 'bottom',
         labels: {
-          font: { size: 12 },
+          font: { size: 9 },
         },
       },
-      title: {
-        display: true,
-        text: 'Sales Pipeline by Agent',
-        font: { size: 16 },
-      },
+      // title: {
+      //   display: true,
+      //   text: 'Sales Pipeline by Agent',
+      //   font: { size: 16 },
+      // },
     },
     scales: {
       x: {

@@ -67,6 +67,9 @@ $apex-grid-color:                                   var(--#{$prefix}border-color
 $table-head-bg:                                     $gray-100;
 $table-dark-border-color:                           tint-color($gray-800, 7.5%);
 
+// global styles 
+$global-color:                                      #1e3c72; // #88A2BF
+$global-font-family:                                 Inter, Roboto, sans-serif;
 
 // Variables
 //

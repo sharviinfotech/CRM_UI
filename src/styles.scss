@@ -612,7 +612,7 @@ table th {
 
   .form-buttons button {
     padding: 12px 25px;
-    background: #28a745;
+    background: #2e9132e0;
     color: white;
     border: none;
     border-radius: 4px;
@@ -620,11 +620,10 @@ table th {
     font-size: 14px;
     font-weight: 500;
     transition: background-color 0.3s ease;
-    height: 48px;
   }
 
   .form-buttons button:hover {
-    background: #218838;
+    background: #2e9132e0;
   }
 
   .form-buttons .btn-secondary {
@@ -818,7 +817,8 @@ table th {
     color: brown;
     // background-color: #ffffff ;
     text-align: center;
-    font-family: 'Times New Roman', Times, serif !important;
+        letter-spacing: 0.3px;
+    font-family: Inter, Roboto, sans-serif;
   }
    
   .card-body-Dashboard {

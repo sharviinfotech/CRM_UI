@@ -59,7 +59,8 @@
     padding: 30px 0 30px 0;
     // margin-top: 85px !important;
     backdrop-filter: blur(0px) brightness(0.9);
-     background-color: #1e3c72;
+    background-color: $global-color;
+    //  background-color: global-color;
     // background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) center center / cover !important;
     // background: url("/assets/images/flightAndSky.jpg") no-repeat center center / cover !important;
 
@@ -400,7 +401,7 @@
 
 body[data-sidebar="dark"] {
     .vertical-menu {
-        background: $sidebar-dark-bg;
+        background: $global-color;
         // background: url("/assets/images/bg9.jpg") no-repeat center center / cover !important;
 
     }

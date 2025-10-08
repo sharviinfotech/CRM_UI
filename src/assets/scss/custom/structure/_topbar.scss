@@ -20,8 +20,8 @@
     margin: 0 auto;
     height: $header-height;
     padding: 0 calc(#{$grid-gutter-width} * 0.5) 0 0
-    /*rtl: 0 0 0 calc(#{$grid-gutter-width} / 2) */
-    ;
+    /*rtl: 0 0 0 calc(#{$grid-gutter-width} / 2) */    ;
+    background-color: $global-color;
 
     .dropdown .show {
         &.header-item {

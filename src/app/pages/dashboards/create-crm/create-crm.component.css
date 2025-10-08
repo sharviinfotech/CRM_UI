@@ -15,15 +15,15 @@
   border-radius: 8px;
   padding: 1rem;
   min-width: 250px;
-  background-color: hsl(210, 96%, 50%);
-  color: white;
+  background-color:white;
+  color: black;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .pipeline-column:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25);
-  color: #fff;
+  color: black;
 }
 
 .pipeline-column h3 {
@@ -35,7 +35,7 @@
 
 .total-amount {
   font-weight: bold;
-  color: white;
+  color: black;
   margin-left: 10px;
 }
 
@@ -61,7 +61,7 @@
   ========================
 */
 .lead-card {
-  background-color: #4a7c8e;
+  background-color: #9aa9c4;
   border: 1px solid #ddd;
   border-radius: 4px;
   color: white;
@@ -118,8 +118,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #202123;
-  color: white;
+  background-color: white;
+  color: black;
   border: 1px solid white;
   border-radius: 4px;
   padding: 0.5rem 1rem;
@@ -153,7 +153,7 @@
   ========================
 */
 .lead-form {
-  background-color: #e818b7;
+  /* background-color: #e818b7; */
   /* #4a7c8e */
   padding: 1rem;
   border-radius: 8px;
@@ -182,19 +182,19 @@
 }
 
 .form-buttons button {
-  padding: 0.5rem 1rem;
+      padding: 6px;
   border-radius: 4px;
   border: none;
   cursor: pointer;
 }
 
 .form-buttons button[type="submit"] {
-  background-color: #0aa810;
+  background-color: #1e3c72;
   color: white;
 }
 
 .form-buttons button[type="button"] {
-  background-color: #5236f4;
+  background-color: #1c8139;
   color: white;
 }
 
@@ -216,7 +216,7 @@
 .add-button:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25);
-  background-color: #4a7c8e;
+  background-color: #9aa9c4;
   color: #2731b8;
 }
 
@@ -233,11 +233,11 @@
 
 .card {
   /* background-color: #383e44; */
-  background-color: #50ccf1;
+  background-color: #ffffffcc;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
-  color: white;
+  color: black;
 }
 
 .details-header {
@@ -267,9 +267,9 @@
 }
 
 .status-button {
-  background-color: #383e44;
-  color: #b0b5b8;
-  border: none;
+  background-color: white;
+    color: black;
+    border: 1px solid black;
   height: 40px;
   /* fixed height */
   gap: 5px;
@@ -312,7 +312,7 @@
 }
 
 .status-button:hover::after {
-  border-left-color: #4CAF50;
+  /* border-left-color: #4CAF50; */
 }
 
 /* Active state */
@@ -326,8 +326,9 @@
 }
 
 .status-button.active:hover::after {
-  border-left-color: #4CAF50;
+  /* border-left-color: #4CAF50; */
   /* Arrow turns green */
+  border-left-color: #4CAF50;
 }
 
 .status-button-left {
@@ -376,7 +377,7 @@
 }
 
 .status-button-left:hover::before {
-  border-right-color: #4CAF50;
+  border-right-color: white;
 }
 
 
@@ -417,8 +418,8 @@
   padding: 0 20px;
   font-size: 0.9rem;
   font-weight: bold;
-  background-color: #383e44;
-  color: #b0b5b8;
+  background-color: #1e3c72;
+  color: white;
   border: none;
   cursor: pointer;
   position: relative;
@@ -426,7 +427,11 @@
   transition: background-color 0.3s, color 0.3s;
   z-index: 1;
 }
-
+.remark-buttons .remark-button-next{
+background-color: #1c8139;
+color: white;
+  border: none;
+}
 /* Add right-pointing arrow for both buttons 
 .remark-buttons .remark-button::after {
   content: '';
@@ -499,12 +504,13 @@
   border-radius: 50%;
   background: transparent;
   /* keep transparent background */
-  border: 2px solid rgba(0, 0, 0, 0.08);
+  border: 2px solid black;
   font-weight: 700;
   cursor: pointer;
   overflow: visible;
   /* allow bubble to animate outside if needed */
   z-index: 1;
+  background: rgb(59 130 246 / 61%) !important;
 }
 
 /* Optional: tweak text (plus / X) so it reads above bubble */
@@ -526,22 +532,23 @@
   height: 18px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%,
+  /* background: radial-gradient(circle at 35% 30%,
       rgba(255, 255, 255, 0.85) 0%,
       rgba(255, 255, 255, 0.55) 6%,
       rgba(173, 216, 230, 0.18) 40%,
       rgba(173, 216, 230, 0.12) 60%,
-      rgba(173, 216, 230, 0.06) 100%);
+      rgba(173, 216, 230, 0.06) 100%); */
   box-shadow:
     0 1px 6px rgba(0, 0, 0, 0.06) inset,
     0 6px 14px rgba(0, 0, 0, 0.04);
   opacity: 0.95;
   z-index: 2;
   transform-origin: center;
-  animation: bubbleFloat 3.6s ease-in-out infinite;
-  will-change: transform, opacity;
+  /* animation: bubbleFloat 3.6s ease-in-out infinite;
+  will-change: transform, opacity; */
   mix-blend-mode: screen;
   /* subtle blend */
+      background: rgb(59 130 246 / 61%) !important;
 }
 
 /* Add a second faint bubble for realism (optional) */
@@ -554,12 +561,13 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(173, 216, 230, 0.08));
+  /* background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(173, 216, 230, 0.08));
   opacity: 0.7;
   z-index: 1;
   transform-origin: center;
   animation: bubbleFloatSmall 4.8s ease-in-out infinite;
-  mix-blend-mode: screen;
+  mix-blend-mode: screen; */
+      background: rgb(59 130 246 / 61%) !important;
 }
 
 /* Large bubble floating animation: subtle scale + translate + fade */

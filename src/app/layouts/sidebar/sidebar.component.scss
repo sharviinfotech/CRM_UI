@@ -6,7 +6,7 @@
   //   #1e3c72 0%,
   //   #2a5298 100%
   // ) center center / cover !important;
-   background-color: #1e3c72;
+  //  background-color:global-color;
   font-family: 'Poppins', sans-serif;
 //   background: url("/assets/images/flightland.jpg") no-repeat center center / cover !important;
 //   background-size: cover;
@@ -45,7 +45,8 @@
  
 .mm-active {
   // background-image: linear-gradient(to bottom,  #6ba3cd, #031c2e) !important;
-  background-image: linear-gradient(to bottom, #92cbe863, #5f91b5) !important;
+  // background-image: linear-gradient(to bottom, #92cbe863, #5f91b5) !important;
+  background-image: linear-gradient(to bottom, #7b9ad27a, #3d64ab) !important;
   color: #303773;
   font-weight: bold;
   border: 2px solid white;
