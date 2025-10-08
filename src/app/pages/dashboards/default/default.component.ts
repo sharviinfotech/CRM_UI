@@ -45,22 +45,22 @@ export class DefaultComponent {
     ],
     datasets: [
       {
-        data: [600, 450, 700, 300, 500, 650, 400, 550, 500, 350, 600],
+        data: [600, 450, 500, 300, 500, 650, 100, 550, 200, 350, 600],
         label: 'Closed Value',
         fill: true,
         tension: 0.4,
         borderColor: '#3b82f6',
-        backgroundColor: 'rgba(59,130,246,0.2)',
+        backgroundColor: 'hsla(13, 45%, 54%, 0.93)',
         pointBackgroundColor: '#ef4444',
         pointRadius: 5
       } as ChartDataset<'line'>
       ,
       {
-        data: [40, 45, 35, 30, 50, 40, 45, 35, 40, 30, 50],
+        data: [40, 70, 650, 450, 250, 60, 200, 35, 475, 60, 300],
         label: 'Won Deals',
         fill: false,
-        borderColor: '#22c55e',
-        backgroundColor: '#22c55e',
+        borderColor: '#f15b10ff',
+        backgroundColor: 'hsla(265, 57%, 66%, 0.86)',
         tension: 0.4,
         borderDash: [5, 5]
       } as ChartDataset<'line'>
@@ -87,22 +87,22 @@ export class DefaultComponent {
     ],
     datasets: [
       {
-        data: [600, 450, 700, 300, 500, 650, 400, 550, 500, 350, 600],
+        data: [600, 450, 700, 200, 500, 650, 400, 550, 500, 350, 600],
         label: 'Projected value',
         fill: true,
         tension: 0.4,
         borderColor: '#3b82f6',
-        backgroundColor: '#33067ce8',
+        backgroundColor: '#4a9bbde8',
         pointBackgroundColor: '#ef4444',
         pointRadius: 5
       } as ChartDataset<'line'>
       ,
       {
-        data: [40, 45, 35, 30, 50, 40, 45, 35, 40, 30, 50],
+        data: [40, 80, 135, 400, 150, 250, 85, 350, 40, 450, 280],
         label: 'Deals due',
         fill: false,
         borderColor: '#ee0c0ce4',
-        backgroundColor: '#ee0c0ce4',
+        backgroundColor: 'hsla(70, 49%, 47%, 0.98)',
         tension: 0.4,
         borderDash: [5, 5]
       } as ChartDataset<'line'>

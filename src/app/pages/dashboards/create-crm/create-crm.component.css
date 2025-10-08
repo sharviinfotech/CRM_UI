@@ -15,13 +15,13 @@
   border-radius: 8px;
   padding: 1rem;
   min-width: 250px;
-  background-color: #383e44;
+  background-color: hsl(210, 96%, 50%);
   color: white;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .pipeline-column:hover {
-  transform: translateY(-5px); 
+  transform: translateY(-5px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25);
   color: #fff;
 }
@@ -41,8 +41,10 @@
 
 .tab-divider {
   border: 0;
-  border-top: 2px solid #ddd; /* line color */
-  margin: 5px 0 15px;         /* spacing */
+  border-top: 2px solid #ddd;
+  /* line color */
+  margin: 5px 0 15px;
+  /* spacing */
 }
 
 
@@ -72,7 +74,7 @@
 
 .lead-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 12px #1221ef40;
   background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
   color: black;
 }
@@ -151,7 +153,8 @@
   ========================
 */
 .lead-form {
-  background-color: #4a7c8e;
+  background-color: #e818b7;
+  /* #4a7c8e */
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 1rem;
@@ -216,6 +219,7 @@
   background-color: #4a7c8e;
   color: #2731b8;
 }
+
 /*
   ========================
   Lead Details View
@@ -228,7 +232,8 @@
 }
 
 .card {
-  background-color: #383e44;
+  /* background-color: #383e44; */
+  background-color: #50ccf1;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
@@ -248,24 +253,30 @@
 */
 .details-card {
   /* Inherits card styles from the .card class */
-  position: relative; /* This is the key change */
-  overflow: hidden; /* Ensures the animation doesn't bleed outside the card */
+  position: relative;
+  /* This is the key change */
+  overflow: hidden;
+  /* Ensures the animation doesn't bleed outside the card */
 }
 
 .details-body {
   /* Add padding and other layout-specific styles here if needed */
   padding-top: 1rem;
-  padding-right: 15rem; /* Add space for the animation */
+  padding-right: 15rem;
+  /* Add space for the animation */
 }
 
 .status-button {
   background-color: #383e44;
   color: #b0b5b8;
   border: none;
-  height: 40px; /* fixed height */
-  gap:5px;
-  line-height: 50%; /* vertical center */
-  padding: 0 20px; /* horizontal padding */
+  height: 40px;
+  /* fixed height */
+  gap: 5px;
+  line-height: 50%;
+  /* vertical center */
+  padding: 0 20px;
+  /* horizontal padding */
   position: relative;
   cursor: pointer;
   display: inline-block;
@@ -273,7 +284,8 @@
   font-weight: bold;
   text-align: center;
   transition: background-color 0.3s, color 0.3s;
-  margin-right: 10px; /* spacing between buttons */
+  margin-right: 10px;
+  /* spacing between buttons */
 }
 
 /* Right arrow after each button */
@@ -281,12 +293,15 @@
   content: '';
   position: absolute;
   top: 0;
-  right: -25px; /* adjust overlap */
+  right: -25px;
+  /* adjust overlap */
   width: 0;
   height: 0;
-  border-top: 20px solid transparent; /* half of button height */
+  border-top: 20px solid transparent;
+  /* half of button height */
   border-bottom: 20px solid transparent;
-  border-left: 25px solid #383e44; /* same as button bg */
+  border-left: 25px solid #383e44;
+  /* same as button bg */
   z-index: 0;
 }
 
@@ -311,21 +326,28 @@
 }
 
 .status-button.active:hover::after {
-  border-left-color: #4CAF50;    /* Arrow turns green */
+  border-left-color: #4CAF50;
+  /* Arrow turns green */
 }
 
 .status-button-left {
   background-color: #383e44;
   color: #b0b5b8;
   border: none;
-  height: 40px;                  /* fixed height */
-  padding: 0 20px;               /* horizontal padding */
+  height: 40px;
+  /* fixed height */
+  padding: 0 20px;
+  /* horizontal padding */
   position: relative;
   cursor: pointer;
-  display: inline-flex;           /* flex to center content */
-  align-items: center;            /* vertical center */
-  justify-content: center;        /* horizontal center */
-  gap: 8px;                       /* space between SVG and text */
+  display: inline-flex;
+  /* flex to center content */
+  align-items: center;
+  /* vertical center */
+  justify-content: center;
+  /* horizontal center */
+  gap: 8px;
+  /* space between SVG and text */
   z-index: 1;
   font-weight: bold;
   transition: background-color 0.3s, color 0.3s;
@@ -337,12 +359,13 @@
   content: '';
   position: absolute;
   top: 0;
-  left: -25px;                     /* adjust overlap */
+  left: -25px;
+  /* adjust overlap */
   width: 0;
   height: 0;
-  border-top: 20px solid transparent; 
+  border-top: 20px solid transparent;
   border-bottom: 20px solid transparent;
-  border-right: 25px solid #383e44; 
+  border-right: 25px solid #383e44;
   z-index: 0;
 }
 
@@ -361,7 +384,8 @@
 .status-button-left svg {
   width: 20px;
   height: 20px;
-  stroke: currentColor; /* inherit button color */
+  stroke: currentColor;
+  /* inherit button color */
   display: block;
 }
 
@@ -371,13 +395,15 @@
   width: 100%;
   border: none;
   border-bottom: 1px solid #ccc;
-  background-color:#383e44;
-  color: white;
+  /* background-color: #383e44; */
+  background-color: #f5f9fd;
+  color: black;
 }
 
 .remark-buttons {
   display: flex;
-  gap: 8px;           /* space between buttons */
+  gap: 8px;
+  /* space between buttons */
   margin-top: 8px;
 }
 
@@ -395,7 +421,8 @@
   color: #b0b5b8;
   border: none;
   cursor: pointer;
-  position: relative; /* needed for arrow */
+  position: relative;
+  /* needed for arrow */
   transition: background-color 0.3s, color 0.3s;
   z-index: 1;
 }
@@ -433,7 +460,8 @@
 }
 
 .won-animation-img {
-  width: 500px; /* adjust size */
+  width: 500px;
+  /* adjust size */
   height: auto;
   animation: floatUp 2s ease-in-out forwards;
 }
@@ -443,9 +471,11 @@
     transform: translateY(50px);
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     transform: translateY(-100px);
     opacity: 0;
@@ -462,20 +492,23 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;              /* tweak size */
+  width: 36px;
+  /* tweak size */
   height: 36px;
   padding: 0;
   border-radius: 50%;
-  background: transparent;  /* keep transparent background */
-  border: 2px solid rgba(0,0,0,0.08);
+  background: transparent;
+  /* keep transparent background */
+  border: 2px solid rgba(0, 0, 0, 0.08);
   font-weight: 700;
   cursor: pointer;
-  overflow: visible;        /* allow bubble to animate outside if needed */
+  overflow: visible;
+  /* allow bubble to animate outside if needed */
   z-index: 1;
 }
 
 /* Optional: tweak text (plus / X) so it reads above bubble */
-.add-button > * {
+.add-button>* {
   position: relative;
   z-index: 3;
 }
@@ -483,31 +516,32 @@
 /* The translucent 'water bubble' */
 .add-button::before {
   content: '';
-  pointer-events: none;         /* keep button clickable */
+  pointer-events: none;
+  /* keep button clickable */
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 18px;                  /* bubble size */
+  width: 18px;
+  /* bubble size */
   height: 18px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(
-    circle at 35% 30%,
-    rgba(255,255,255,0.85) 0%,
-    rgba(255,255,255,0.55) 6%,
-    rgba(173,216,230,0.18) 40%,
-    rgba(173,216,230,0.12) 60%,
-    rgba(173,216,230,0.06) 100%
-  );
+  background: radial-gradient(circle at 35% 30%,
+      rgba(255, 255, 255, 0.85) 0%,
+      rgba(255, 255, 255, 0.55) 6%,
+      rgba(173, 216, 230, 0.18) 40%,
+      rgba(173, 216, 230, 0.12) 60%,
+      rgba(173, 216, 230, 0.06) 100%);
   box-shadow:
-    0 1px 6px rgba(0,0,0,0.06) inset,
-    0 6px 14px rgba(0,0,0,0.04);
+    0 1px 6px rgba(0, 0, 0, 0.06) inset,
+    0 6px 14px rgba(0, 0, 0, 0.04);
   opacity: 0.95;
   z-index: 2;
   transform-origin: center;
   animation: bubbleFloat 3.6s ease-in-out infinite;
   will-change: transform, opacity;
-  mix-blend-mode: screen; /* subtle blend */
+  mix-blend-mode: screen;
+  /* subtle blend */
 }
 
 /* Add a second faint bubble for realism (optional) */
@@ -520,7 +554,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(173,216,230,0.08));
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(173, 216, 230, 0.08));
   opacity: 0.7;
   z-index: 1;
   transform-origin: center;
@@ -534,14 +568,17 @@
     transform: translate(-50%, -50%) translateY(0) scale(0.92);
     opacity: 0.95;
   }
+
   30% {
     transform: translate(-50%, -60%) translateY(-2px) scale(1.02);
     opacity: 0.98;
   }
+
   60% {
     transform: translate(-50%, -72%) translateY(-6px) scale(0.98);
     opacity: 0.88;
   }
+
   100% {
     transform: translate(-50%, -90%) translateY(-10px) scale(0.94);
     opacity: 0.78;
@@ -551,13 +588,15 @@
 /* Smaller bubble drift */
 @keyframes bubbleFloatSmall {
   0% {
-    transform: translate(0,0) scale(1);
+    transform: translate(0, 0) scale(1);
     opacity: 0.75;
   }
+
   50% {
     transform: translate(-4px, -6px) scale(0.95);
     opacity: 0.85;
   }
+
   100% {
     transform: translate(-8px, -12px) scale(0.9);
     opacity: 0.6;
@@ -568,11 +607,12 @@
 /* Focus / hover polish */
 .add-button:focus {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(173,216,230,0.12);
+  box-shadow: 0 0 0 4px rgba(173, 216, 230, 0.12);
 }
 
 .add-button:hover::before {
-  animation-duration: 2.8s; /* slightly faster on hover */
+  animation-duration: 2.8s;
+  /* slightly faster on hover */
   opacity: 1;
 }
 
@@ -580,53 +620,71 @@
 /*sunil anna code*/
 /* Styling for the overall card container */
 .card-LE {
-    border-radius: 16px !important; /* Slightly more rounded corners for modern look */
-    background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white background */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important; /* Stronger shadow for depth */
-    backdrop-filter: blur(10px); /* Frosted glass effect */
-    -webkit-backdrop-filter: blur(10px); /* For Safari */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle white border */
+  border-radius: 16px !important;
+  /* Slightly more rounded corners for modern look */
+  background-color: rgba(255, 255, 255, 0.15);
+  /* Semi-transparent white background */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+  /* Stronger shadow for depth */
+  backdrop-filter: blur(10px);
+  /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(10px);
+  /* For Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* Subtle white border */
 }
- 
+
 /* Header styling, keeping original colors but adjusting for glassmorphism background */
 .card-header-LE {
-    font-size: 20px !important;
-    font-weight: bold !important;
-    padding: 15px 20px; /* Adjusted padding */
-    border-bottom: 2px solid green; /* Keep the green border */
-    color: brown;
-    background: transparent; /* Make header background transparent to show backdrop-filter */
-    text-align: center;
-    font-family: 'Times New Roman', Times, serif !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+  padding: 15px 20px;
+  /* Adjusted padding */
+  border-bottom: 2px solid green;
+  /* Keep the green border */
+  color: brown;
+  background: transparent;
+  /* Make header background transparent to show backdrop-filter */
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif !important;
 }
-   
+
 /* Card body styling - already had good glassmorphism properties, just harmonizing */
 .card-body-LE {
-    padding: 10px !important; /* Adjusted padding */
-    background: transparent; /* Make body background transparent to show backdrop-filter */
+  padding: 10px !important;
+  /* Adjusted padding */
+  background: transparent;
+  /* Make body background transparent to show backdrop-filter */
 }
+
 .btn-glass-save {
-    /* Glassmorphism Effect */
-    background: rgba(255, 255, 255, 0.15) !important; /* Semi-transparent background */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px); /* For Safari support */
-   border: 1px solid rgb(183 163 163 / 51%) !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
- 
-    /* Typography and Size (reusing from your original .btnSave) */
-    padding: 10px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    color: #bf1e1e !important;
-    font-weight: bold; /* Make it stand out */
-    transition: all 0.3s ease; /* Smooth transition for hover */
+  /* Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.15) !important;
+  /* Semi-transparent background */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  /* For Safari support */
+  border: 1px solid rgb(183 163 163 / 51%) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow for depth */
+
+  /* Typography and Size (reusing from your original .btnSave) */
+  padding: 10px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #bf1e1e !important;
+  font-weight: bold;
+  /* Make it stand out */
+  transition: all 0.3s ease;
+  /* Smooth transition for hover */
 }
- 
+
 .btn-glass-save:hover {
-    /* Change on hover for feedback */
-    background-color: white !important;
-    color: #057e1b !important; /* Change text color to the original save color */
-    border: 1px solid #057e1b !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
+  /* Change on hover for feedback */
+  background-color: white !important;
+  color: #057e1b !important;
+  /* Change text color to the original save color */
+  border: 1px solid #057e1b !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  /* Slightly stronger shadow on hover */
 }
- 
